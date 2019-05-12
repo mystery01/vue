@@ -12,21 +12,6 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: () => import('@/pages/home/index')
-    },
-    { // 短文征稿活动
-      path: '/shortessay',
-      name: 'Essay',
-      component: () => import('@/pages/common/activity/shortEssay')
-    },
-    { // 用户协议
-      path: '/',
-      name: 'UserAgreement',
-      component: () => import('@/pages/common/activity/userAgreement')
-    },
-    { // 成为作者
-      path: '/author',
-      name: 'Author',
-      component: () => import('@/pages/common/activity/author')
     }
   ],
   scrollBehavior (to, from, savedPosition) {
