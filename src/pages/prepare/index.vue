@@ -22,12 +22,14 @@
     font-size: 0.16rem;
   }
   .desc-title {
-    line-height: 0.24rem;
+    line-height: 0.4rem;
     font-weight: 600;
   }
   .desc-content {
-    padding: 0.10rem 0;
+    padding: 0.10rem;
     list-style: none;
+    background: #f9f9f9;
+    border-radius: 0.08rem;
   }
   .desc-content li {
     padding: 0.05rem 0;
@@ -36,12 +38,12 @@
   .pre-btn {
     text-align: center;
     line-height: 0;
-    padding-top: 0.2rem;
+    padding-top: 0.1rem;
   }
   .pre-btn p {
     font-size: 0.16rem;
-    height: 0.2rem;
-    line-height: 0.2rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
   }
 
   .mint-cell, .mint-cell-wrapper {
@@ -52,6 +54,10 @@
   /*.mint-cell {*/
     /*min-height: 10vw !important;*/
   /*}*/
+  .sex-select {
+    width: 0.15rem;
+    height: 0.15rem;
+  }
 
 </style>
 
@@ -70,10 +76,12 @@
         <div class="mint-cell-wrapper">
           <div class="mint-cell-title"><!----> <span class="mint-cell-text">性别</span> <!----></div>
           <div class="mint-cell-value">
-            <mt-radio
-              v-model="sex"
-              :options="[{label: '男', value: '1'}, {label: '女', value: '2'}]">
-            </mt-radio>
+            <label><input type="radio" class="sex-select" name="sex" :value="0" v-model="sex">男</label>
+            <label><input type="radio" class="sex-select" name="sex" :value="1" v-model="sex">女</label>
+            <!--<mt-radio-->
+              <!--v-model="sex"-->
+              <!--:options="[{label: '男', value: '1'}, {label: '女', value: '2'}]">-->
+            <!--</mt-radio>-->
           </div>
         </div>
         <div class="mint-cell-right"></div>
@@ -99,19 +107,21 @@
       </div>
       <div class="pre-btn">
         <p>请把手机给您的孩子，开始发现他/她的优势吧</p>
-        <mt-button type="danger" size="large" @click="handleStart">开始正式测评</mt-button>
+        <mt-button type="danger" size="large" @click="startExam">开始正式测评</mt-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import _qj from '../../assets/js/util.js'
+import { Toast } from 'mint-ui'
 export default {
   name: 'prepare',
   data () {
     return {
       username: '',
-      sex: '1',
+      sex: 0,
       birthday: '',
       value: 'A',
       options: [
@@ -138,16 +148,32 @@ export default {
       ]
     }
   },
-  mounted () {
-    //
-  },
   methods: {
-    getList () {
-      //
-    },
-    handleStart () {
-      this.$router.push({
-        name: 'evaluation'
+    startExam () {
+      if (!this.username.trim()) {
+        Toast('请输入孩子姓名')
+        return
+      }
+      if (!this.birthday.trim()) {
+        Toast('请选择孩子出生日期')
+        return
+      }
+      _qj.request({
+        method: 'post',
+        url: 'c/api/start_exam',
+        data: {
+          childName: this.username,
+          childGender: this.sex, // 0-女，1-男
+          childBirthday: this.birthday
+        }
+      }).then(res => {
+        if (res.code === 0) {
+          this.$router.push({
+            name: 'evaluation'
+          })
+        } else {
+          Toast(res.msg)
+        }
       })
     }
   }
