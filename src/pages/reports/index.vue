@@ -145,6 +145,7 @@ export default {
       display flex
       margin: .3rem 0
       table{
+        width: 100%;
         flex: 1
         th{
           text-align center
