@@ -1,0 +1,60 @@
+.category-1{
+  color:#B5E2B5;
+  border-color: #B5E2B5!important;
+}
+.category-2{
+  color: #7FBEDB;
+  border-color: #7FBEDB!important;
+}
+.category-3{
+  color: #F0A394;
+  border-color: #F0A394!important;
+}
+.category-4{
+  border-color: #F7D09B!important;
+  color:#F7D09B ;
+}
+.category-5{
+  border-color: #7487C1 ;
+  color:  #7487C1;
+}
+.category-6{
+  border-color:#9ED8E3 ;
+  color:#9ED8E3 ;
+}
+.category-7{
+  border-color:#A490F3 ;
+  color:#A490F3 ;
+}
+.category-8{
+  border-color:#F9A0AD ;
+  color:#F9A0AD ;
+}
+.category-9{
+  border-color:#E39393 ;
+  color:#E39393 ;
+}
+.category-10{
+  border-color:#EFB3CF ;
+  color: #EFB3CF;
+}
+.category-11{
+  border-color:  #C4EAC5;
+  color:  #C4EAC5;
+}
+.category-12{
+  border-color: #EDAF87 ;
+  color: #EDAF87 ;
+}
+#app{
+  /* padding-top: .64rem; */
+}
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    /*增加底部适配层*/
+    body {
+        /* padding-bottom:.33rem; */
+    }
+    #app{
+      /* padding-top: .88rem */
+    }
+}
