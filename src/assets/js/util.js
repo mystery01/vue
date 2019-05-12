@@ -5,44 +5,16 @@ import store from '../../store'
 // let serverUrl = 'http://i.qijizuopin.net/' // 本地服务器部署
 // let serverUrl = 'api/' // 本地服务器部署
 // let serverUrl = 'https://i_pre.qijizuopin.com/' // 打包部署上预发布时
-let serverUrl = 'https://i.qijizuopin.com/' // 打包部署上线时
+let serverUrl = 'http://39.106.231.192/' // 打包部署上线时
 
 export default {
   request (param) {
-    var signName = ''
-    param.flag = 0
-    if (param.method === 'post' && param.data !== undefined) {
-      param.data = Object.assign(param.data, {
-        uuid: store.state.uuid,
-        token: store.state.token,
-        timestampName: Math.round(new Date().getTime() / 1000)
-      })
-      var u = navigator.userAgent
-      if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
-        param.data.source = 2
-      } else {
-        param.data.source = 3
-      }
-      signName = this.signName(param)
-      param.data = Object.assign(param.data, {
-        signName: signName
-      })
-    }
-    if (param.flag === 0) {
-      param.flag = 1
-      axios({
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        method: param.method || 'get',
-        url: serverUrl + param.url || '',
-        dataType: param.type || 'json',
-        data: param.data || ''
-      }).then(param.succ).then(() => {
-        param.flag = 0
-        param.callback && param.callback()
-      }).catch((error) => {
-        console.log('error', error)
-      })
-    }
+    return axios({
+      // headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      method: param.method || 'get',
+      url: serverUrl + param.url || '',
+      data: param.data || ''
+    }).then(res => res.data)
   },
   signName (param) {
     // console.log('data', param.data)

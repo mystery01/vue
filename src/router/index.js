@@ -22,6 +22,26 @@ const router = new Router({
       path: '/detail',
       name: 'detail',
       component: () => import('@/pages/evaluationReport/detail')
+    },
+    { // 测评首页
+      path: '/main',
+      name: 'main',
+      component: () => import('@/pages/main/index')
+    },
+    { // 测评查看报告
+      path: '/reports',
+      name: 'reports',
+      component: () => import('@/pages/reports/index')
+    },
+    { // 测评准备
+      path: '/prepare',
+      name: 'prepare',
+      component: () => import('@/pages/prepare/index')
+    },
+    { // 开始测评
+      path: '/evaluation',
+      name: 'evaluation',
+      component: () => import('@/pages/evaluation/index')
     }
   ],
   scrollBehavior (to, from, savedPosition) {

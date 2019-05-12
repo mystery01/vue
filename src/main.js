@@ -19,7 +19,7 @@ import 'babel-polyfill'
 import VueTouch from 'vue-touch'
 Vue.use(VueTouch, {name: 'v-touch'}) //全局引用
 Vue.use(Mint)
-
+// 123
 Vue.config.productionTip = false
 fastClick.attach(document.body)
 
