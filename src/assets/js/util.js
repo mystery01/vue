@@ -9,6 +9,7 @@ let serverUrl = 'http://39.106.231.192/' // 打包部署上线时
 
 export default {
   request (param) {
+    axios.defaults.withCredentials = true;
     return axios({
       // headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       method: param.method || 'get',
