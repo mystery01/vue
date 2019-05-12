@@ -104,13 +104,17 @@ export default {
         method: 'get',
         url: 'c/api/get_question?index=' + this.index
       }).then(res => {
-        let data = res.data || {}
-        let {index = 0, questionCount = 0, hasNext = false} = data
-        data.value = String(data.value || '1')
-        this.subject = data
-        this.index = index
-        this.questionCount = questionCount
-        this.hasNext = hasNext
+        if (res.code === 0) {
+          let data = res.data || {}
+          let {index = 0, questionCount = 0, hasNext = false} = data
+          data.value = String(data.value || '1')
+          this.subject = data
+          this.index = index
+          this.questionCount = questionCount
+          this.hasNext = hasNext
+        } else {
+          Toast(res.msg)
+        }
       })
     },
     answerQuestion () {
@@ -122,17 +126,21 @@ export default {
           value: Number(this.subject.value)
         }
       }).then(res => {
-        if (res.data.isFinished) {
-          // Toast({
-          //   message: '测试结束',
-          //   iconClass: 'icon icon-success'
-          // })
-          this.$router.push({
-            name: 'reports'
-          })
+        if (res.code === 0) {
+          if (res.data.isFinished) {
+            // Toast({
+            //   message: '测试结束',
+            //   iconClass: 'icon icon-success'
+            // })
+            this.$router.push({
+              name: 'reports'
+            })
+          } else {
+            this.index += 1
+            this.getSubject()
+          }
         } else {
-          this.index += 1
-          this.getSubject()
+          Toast(res.msg)
         }
       })
     },
