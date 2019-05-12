@@ -22,7 +22,7 @@ export default {
   methods: {
     toast () {
       Toast({
-        message: '麒麟臂11',
+        message: '麒麟臂12',
         position: 'center',
         duration: 5000
       })
