@@ -138,7 +138,7 @@ export default {
       this.seconds = this.seconds - 1
     },
     checkMobile () {
-      return /^1(3|4|5|7|8)\d{9}$/.test(this.phone)
+      return /^1(3|4|5|6|7|8)\d{9}$/.test(this.phone)
     },
     checkCode () {
       let captchaString = this.captcha.replace(/\s/g, '')

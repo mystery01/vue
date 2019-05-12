@@ -8,11 +8,6 @@ Vue.use(Router)
 const router = new Router({
   // mode: 'history',
   routes: [
-    { // 首页
-      path: '/',
-      name: 'home',
-      component: () => import('@/pages/home/index')
-    },
     { // 评测报告
       path: '/report',
       name: 'report',
@@ -24,7 +19,7 @@ const router = new Router({
       component: () => import('@/pages/evaluationReport/detail')
     },
     { // 测评首页
-      path: '/main',
+      path: '/',
       name: 'main',
       component: () => import('@/pages/main/index')
     },
