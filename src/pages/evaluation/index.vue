@@ -122,7 +122,7 @@ export default {
           value: Number(this.subject.value)
         }
       }).then(res => {
-        if (!res.data.isFinished) {
+        if (res.data.isFinished) {
           // Toast({
           //   message: '测试结束',
           //   iconClass: 'icon icon-success'
