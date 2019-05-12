@@ -104,6 +104,7 @@ hr {
 
 input, select {
     vertical-align:middle;
+    background: transparent;
 }
 img{
   pointer-events: none
