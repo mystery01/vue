@@ -28,6 +28,7 @@
   </div>
 </template>
 <script>
+import Api from '../../assets/js/util'
 export default {
   data () {
     return {
@@ -55,7 +56,19 @@ export default {
   created () {
     document.title = '盖洛普优势评测报告'
   },
+  mounted() {
+    this.fetchData()
+  },
   methods: {
+    // 获取数据
+    fetchData() {
+      const url = 'c/api/get_simple_report?exam_id=1'
+      Api.request({
+        url
+      }).then((res)=>{
+        console.log(res,'sdsdsdsd')
+      })
+    }
   },
   components: {
   }
