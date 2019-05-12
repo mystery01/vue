@@ -12,6 +12,16 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: () => import('@/pages/home/index')
+    },
+    { // 评测报告
+      path: '/report',
+      name: 'report',
+      component: () => import('@/pages/evaluationReport/index')
+    },
+    { // 详细评测报告
+      path: '/detail',
+      name: 'detail',
+      component: () => import('@/pages/evaluationReport/detail')
     }
   ],
   scrollBehavior (to, from, savedPosition) {
