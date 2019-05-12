@@ -39,7 +39,9 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 import { Toast } from 'mint-ui'
+const url = 'http://39.106.231.192/c/api'
 export default {
   data () {
     return {
@@ -73,21 +75,64 @@ export default {
         Toast('请输入验证码！')
         return false
       }
-      this.$router.push('/reports')
+      this.login().then((data) => {
+        if(data.data.code == 0) {
+          this.$router.push('/reports')
+        }else if(data.data.code == 401){
+          Toast('无查看权限!')
+          setTimeout(() => {
+            this.$router.push('/main')
+          }, 1000)
+        }else if(data.data.code == 402){
+          Toast('没有找到进行中的测验!')
+          setTimeout(() => {
+            this.$router.push('/prepare')
+          }, 1000)
+        }
+      })
     },
     goTest () {
       if (this.checkCode()) {
         Toast('请输入验证码！')
         return false
       }
-      this.$router.push('/prepare')
+      this.login().then((data) => {
+        if(data.data.code == 0) {
+          this.$router.push('/prepare')
+        }else if(data.data.code == 401){
+          Toast('无查看权限!')
+          setTimeout(() => {
+            this.$router.push('/main')
+          }, 1000)
+        }else if(data.data.code == 402){
+          Toast('没有找到进行中的测验!')
+          setTimeout(() => {
+            this.$router.push('/prepare')
+          }, 1000)
+        }
+      })
     },
     getCode () {
       if (!this.checkMobile()) {
         Toast('请输入正确的手机号！')
         return false
       }
-      this.seconds = 60
+      this.getAuthCode().then((data) => {
+        if(data.data.code == 0) {
+          Toast('验证码已发送！')
+          this.seconds = 60
+        }else if(data.data.code == 401){
+          Toast('无查看权限!')
+          setTimeout( () => {
+            this.$router.push('/main')
+          },1000)
+        }else if(data.data.code == 402){
+          Toast('没有找到进行中的测验!')
+          setTimeout( () => {
+            this.$router.push('/prepare')
+          },1000)
+        }
+      })
     },
     timeRun () {
       this.seconds = this.seconds - 1
@@ -98,6 +143,29 @@ export default {
     checkCode () {
       let captchaString = this.captcha.replace(/\s/g, '')
       return captchaString.length === 0
+    },
+    getAuthCode () {
+      let param = {}
+      param.parentPhone = this.phone
+      return axios.post(url+'/get_sms_auth_code', param, {'Content-Type': 'application/x-www-form-urlencoded'})
+      .then((data) => {
+        return data
+      })
+      .catch((error) => {
+        Toast('网络异常')
+      })
+    },
+    login () {
+      let param = {}
+      param.parentPhone = this.phone
+      param.smsAuthCode = this.captcha
+      return axios.post(url+'/login', param, {'Content-Type': 'application/x-www-form-urlencoded'})
+      .then((data) => {
+        return data
+      })
+      .catch((error) => {
+        Toast('网络异常')
+      })
     }
   },
   components: {
@@ -111,7 +179,7 @@ export default {
     border: 0;
     appearance:none;
     -webkit-appearance:none;
-    background: url("https://raw.githubusercontent.com/ourjs/static/gh-pages/2015/arrow.png") no-repeat scroll right center transparent;
+    background: url("../../assets/images/test/select.png") no-repeat scroll right center transparent;
   }
   select::-ms-expand { display: none; }
   input{
