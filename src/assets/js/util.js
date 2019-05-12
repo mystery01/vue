@@ -12,6 +12,7 @@ axios.defaults.withCredentials = true
 
 export default {
   request (param) {
+    axios.defaults.withCredentials = true;
     return axios({
       // headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       method: param.method || 'get',
