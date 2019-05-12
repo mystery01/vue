@@ -39,9 +39,8 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+import _qj from '../../assets/js/util'
 import { Toast } from 'mint-ui'
-const url = 'http://39.106.231.192/c/api'
 export default {
   data () {
     return {
@@ -76,18 +75,20 @@ export default {
         return false
       }
       this.login().then((data) => {
-        if(data.data.code == 0) {
+        if (data.code === 0) {
           this.$router.push('/reports')
-        }else if(data.data.code == 401){
+        } else if (data.code === 401) {
           Toast('无查看权限!')
           setTimeout(() => {
             this.$router.push('/main')
           }, 1000)
-        }else if(data.data.code == 402){
+        } else if (data.code === 402) {
           Toast('没有找到进行中的测验!')
           setTimeout(() => {
             this.$router.push('/prepare')
           }, 1000)
+        } else {
+          Toast(data.msg)
         }
       })
     },
@@ -97,18 +98,20 @@ export default {
         return false
       }
       this.login().then((data) => {
-        if(data.data.code == 0) {
+        if (data.code === 0) {
           this.$router.push('/prepare')
-        }else if(data.data.code == 401){
+        } else if (data.code === 401) {
           Toast('无查看权限!')
           setTimeout(() => {
             this.$router.push('/main')
           }, 1000)
-        }else if(data.data.code == 402){
+        } else if (data.code === 402) {
           Toast('没有找到进行中的测验!')
           setTimeout(() => {
             this.$router.push('/prepare')
           }, 1000)
+        } else {
+          Toast(data.msg)
         }
       })
     },
@@ -118,19 +121,21 @@ export default {
         return false
       }
       this.getAuthCode().then((data) => {
-        if(data.data.code == 0) {
+        if (data.code === 0) {
           Toast('验证码已发送！')
           this.seconds = 60
-        }else if(data.data.code == 401){
+        } else if (data.code === 401) {
           Toast('无查看权限!')
-          setTimeout( () => {
+          setTimeout(() => {
             this.$router.push('/main')
-          },1000)
-        }else if(data.data.code == 402){
+          }, 1000)
+        } else if (data.code === 402) {
           Toast('没有找到进行中的测验!')
-          setTimeout( () => {
+          setTimeout(() => {
             this.$router.push('/prepare')
-          },1000)
+          }, 1000)
+        } else {
+          Toast(data.msg)
         }
       })
     },
@@ -147,24 +152,20 @@ export default {
     getAuthCode () {
       let param = {}
       param.parentPhone = this.phone
-      return axios.post(url+'/get_sms_auth_code', param, {'Content-Type': 'application/x-www-form-urlencoded'})
-      .then((data) => {
-        return data
-      })
-      .catch((error) => {
-        Toast('网络异常')
+      return _qj.request({
+        method: 'post',
+        url: 'c/api/get_sms_auth_code',
+        data: param
       })
     },
     login () {
       let param = {}
       param.parentPhone = this.phone
       param.smsAuthCode = this.captcha
-      return axios.post(url+'/login', param, {'Content-Type': 'application/x-www-form-urlencoded'})
-      .then((data) => {
-        return data
-      })
-      .catch((error) => {
-        Toast('网络异常')
+      return _qj.request({
+        method: 'post',
+        url: 'c/api/login',
+        data: param
       })
     }
   },

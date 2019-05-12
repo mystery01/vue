@@ -1,6 +1,7 @@
 import axios from 'axios'
 import md5 from 'js-md5'
 import store from '../../store'
+axios.defaults.withCredentials = true
 // let serverUrl = '/api/v1' // 本地调试时
 // let serverUrl = 'http://i.qijizuopin.net/' // 本地服务器部署
 // let serverUrl = 'api/' // 本地服务器部署

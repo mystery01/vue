@@ -13,20 +13,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in tbody" :key="index">
+          <tr v-for="item in tbody" :key="item.id">
             <td>
               {{item.mobile}}
             </td>
             <td>
-              {{item.name}}
+              {{item.childName}}
             </td>
             <td>
-              <span v-for="child of item.advantage" :key="child">
+              <span v-for="child of item.theme_name_list" :key="child">
                 {{child}}<br />
               </span>
             </td>
             <td>
-              {{item.data}}<br />{{item.time}}
+              {{item.ctime}}<br />{{item.ctime}}
             </td>
             <td>
               <span class="option_common option_simple">
@@ -60,6 +60,8 @@
   </div>
 </template>
 <script>
+import _qj from '../../assets/js/util'
+import { Toast } from 'mint-ui'
 export default {
   data () {
     return {
@@ -74,20 +76,7 @@ export default {
         '手机号', '孩子姓名', '优势', '测评时间', '报告'
       ],
       tbody: [
-        {
-          mobile: '18903985188',
-          name: '李富贵',
-          advantage: ['独立', '竞争', '可靠'],
-          data: '2019/05/01',
-          time: '11:00:00'
-        },
-        {
-          mobile: '18903985188',
-          name: '李富贵',
-          advantage: ['独立', '竞争', '可靠'],
-          data: '2019/05/01',
-          time: '11:00:00'
-        }
+
       ]
     }
   },
@@ -104,20 +93,38 @@ export default {
     }
   },
   created () {
-
+    this.getList().then((data) => {
+      if (data.code === 0) {
+        Toast('验证码已发送！')
+        this.tbody = data.data.examList
+      } else if (data.code === 401) {
+        Toast('无查看权限!')
+        setTimeout(() => {
+          this.$router.push('/main')
+        }, 1000)
+      } else if (data.code === 402) {
+        Toast('没有找到进行中的测验!')
+        setTimeout(() => {
+          this.$router.push('/prepare')
+        }, 1000)
+      } else {
+        Toast(data.msg)
+      }
+    })
   },
   methods: {
     goReport () {
       this.$router.push('/reports')
     },
-    getCode () {
-      this.seconds = 60
-    },
-    timeRun () {
-      this.seconds = this.seconds - 1
+    getList () {
+      return _qj.request({
+        method: 'GET',
+        url: 'c/api/query_exam_list'
+      })
     }
   },
   components: {
+
   }
 }
 </script>
