@@ -99,7 +99,7 @@
       </div>
       <div class="pre-btn">
         <p>请把手机给您的孩子，开始发现他/她的优势吧</p>
-        <mt-button type="danger" size="large">开始正式测评</mt-button>
+        <mt-button type="danger" size="large" @click="handleStart">开始正式测评</mt-button>
       </div>
     </div>
   </div>
@@ -144,6 +144,11 @@ export default {
   methods: {
     getList () {
       //
+    },
+    handleStart () {
+      this.$router.push({
+        name: 'evaluation'
+      })
     }
   }
 }
