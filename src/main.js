@@ -23,7 +23,7 @@ import VueTouch from 'vue-touch'
 Vue.use(VueTouch, {name: 'v-touch'}) //全局引用
 Vue.use(toast)
 Vue.use(Mint)
-
+// aa11111
 Vue.config.productionTip = false
 fastClick.attach(document.body)
 Vue.use(VueAwesomeSwiper)
