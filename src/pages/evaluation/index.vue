@@ -16,6 +16,10 @@
     background: transparent !important;
     padding: 0 !important;
   }
+  .evaluation-body .mint-radiolist-title {
+    font-size: 0.22rem;
+    color: #333 !important;
+  }
   .evaluation-footer button.mint-button:last-child {
     margin-top: 0.15rem;
   }
@@ -33,7 +37,7 @@
         <div v-for="(item, index) in subject" :key="index">
           <mt-radio
             v-if="(index + 1) === current"
-            :title="item.item"
+            :title="item.title"
             v-model="item.value"
             :options="options">
           </mt-radio>
