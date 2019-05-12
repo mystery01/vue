@@ -12,6 +12,16 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: () => import('@/pages/home/index')
+    },
+    { // 测评准备
+      path: '/prepare',
+      name: 'prepare',
+      component: () => import('@/pages/prepare/index')
+    },
+    { // 开始测评
+      path: '/evaluation',
+      name: 'evaluation',
+      component: () => import('@/pages/evaluation/index')
     }
   ],
   scrollBehavior (to, from, savedPosition) {
