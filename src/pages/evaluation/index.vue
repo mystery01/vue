@@ -124,7 +124,7 @@ export default {
             iconClass: 'icon icon-success'
           })
           this.$router.push({
-            name: 'reports'
+            name: 'report'
           })
         } else {
           Toast(res.msg)

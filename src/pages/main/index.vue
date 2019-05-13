@@ -1,8 +1,5 @@
 <template>
   <div class="test_main">
-    <div class="main_title">
-      盖洛普青少年测评
-    </div>
     <div class="main_des">
       <div class="main_des_info">
         盖洛普青少年测评一款基于积极心理学研发而成的，用于了解一个人自然而然地思考、感觉或行为的方式的测评。此测评可以辅助孩子了解自己的优势，用优势点亮人生，本测评相对市面测评有更久的历史，以及更细节，会测试动机层面，此次测评总共有10个主题，分别如下
@@ -66,7 +63,7 @@ export default {
     }
   },
   created () {
-
+    document.title = '盖洛普青少年测评'
   },
   methods: {
     goReport () {
