@@ -12,6 +12,13 @@
             <span>{{ele.value}}</span>
           </div>
       </div>
+      <div class="advantage">
+          <p>优势证明</p>
+          <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
+            <span>{{ele.name}}</span>
+            <span>{{ele.intro}}</span>
+          </div>
+      </div>
       <div class="des">
         <p>完成报告会包含以下内容:</p>
         <p>孩子优势的详细解读</p>
@@ -33,10 +40,11 @@ export default {
   data () {
     return {
       isLoading: false,
+      themeList: [],
       advantage: [
         {
           key: '独立',
-          value: '你非常负责且容易被人信任,别人很容易依赖你'
+          value: '你非常负责且容易被人信任,别人很容易依赖你别人很容易依赖你别人很容易依赖你别人很容易依赖你别人很容易依赖你'
         },
         {
           key: '独立',
@@ -57,16 +65,27 @@ export default {
     document.title = '盖洛普优势评测报告'
   },
   mounted() {
-    this.fetchData()
+    this.getList()
+    
   },
   methods: {
     // 获取数据
-    fetchData() {
-      const url = 'c/api/get_simple_report?exam_id=1'
+    fetchData(id) {
+      const url = `c/api/get_simple_report?exam_id=${id}`
       Api.request({
         url
       }).then((res)=>{
+        this.themeList = res.data.themeList
         console.log(res,'sdsdsdsd')
+      })
+    },
+    getList () {
+      Api.request({
+        method: 'GET',
+        url: 'c/api/query_exam_list'
+      }).then((res)=>{
+        let id = res.data.examList[0].id
+        this.fetchData(id)
       })
     }
   },
@@ -94,7 +113,7 @@ export default {
       .advantage {
         margin 0 auto
         width 2.7rem
-        height 2.5rem
+        // height 2.5rem
         border: .01rem solid #333
         p {
           margin .1rem auto .1rem auto
@@ -102,13 +121,13 @@ export default {
         }
         .advantage_item {
           margin-top .2rem
-          height .4rem
           display: flex
           justify-content center
-          line-height center
+          margin-bottom .2rem
           :nth-child(1) {
-            text-align center
-            line-height .4rem
+            display flex
+            justify-content center
+            align-items center
             width: .5rem
             font-size .2rem
           }
