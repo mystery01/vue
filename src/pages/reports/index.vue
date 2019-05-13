@@ -18,7 +18,7 @@
               {{item.childName}}
             </td>
             <td>
-              <span v-for="child of item.theme_name_list" :key="child">
+              <span v-for="(child, index) in item.theme_name_list" :key="index">
                 {{child}}<br />
               </span>
             </td>
@@ -108,47 +108,11 @@ export default {
     this.getList().then((data) => {
       if (data.code === 0) {
         this.parentPhone = data.data.parentPhone
-        // this.tbody = data.data.examList
-        this.tbody = [
-                      {
-                        "childName": "伊伊",
-                        "ctime": 1557583559970,    // 测验开始时间
-                        "id": 1,
-                        "status": 0,
-                        "theme_name_list": [
-                          "111",
-                          "222",
-                          "333"
-                        ]
-                      },
-                      {
-                        "childName": "伊伊",
-                        "ctime": 1557583559970,    // 测验开始时间
-                        "id": 1,
-                        "status": 10,
-                        "theme_name_list": [
-                          "111",
-                          "222",
-                          "333"
-                        ]
-                      },
-                      {
-                        "childName": "伊伊",
-                        "ctime": 1557583559970,    // 测验开始时间
-                        "id": 1,
-                        "status": 50,
-                        "theme_name_list": [
-                          "111",
-                          "222",
-                          "333"
-                        ]
-                      }
-                    ]
-
+        this.tbody = data.data.examList
       } else if (data.code === 401) {
         Toast('无查看权限!')
         setTimeout(() => {
-          this.$router.push('/main')
+          this.$router.push('/')
         }, 1000)
       } else if (data.code === 402) {
         Toast('没有找到进行中的测验!')
