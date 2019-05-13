@@ -33,23 +33,24 @@
       <div class="progress-detail" v-if="questionCount">{{index}}/{{questionCount}}</div>
     </div>
     <div class="evaluation-body">
-      <div class="evaluation-subject">
+      <div class="evaluation-subject" v-for="(item, i) in subject" :key="i">
         <mt-radio
-          :title="subject.content"
-          v-model="subject.value"
+          v-if="(i + 1) === index"
+          :title="item"
+          v-model="value[i]"
           :options="options">
         </mt-radio>
       </div>
     </div>
     <div class="evaluation-footer">
-      <mt-button type="danger" size="large" @click="handleNext">下一题</mt-button>
+      <mt-button type="danger" size="large" @click="handleNext">{{index && subject.length && index === subject.length ? '提交' : '下一题'}}</mt-button>
       <mt-button type="danger" size="large" @click="handlePrevious" :disabled="index === 1">上一题</mt-button>
     </div>
   </div>
 </template>
 
 <script>
-import { MessageBox, Toast } from 'mint-ui'
+import { Toast, MessageBox } from 'mint-ui'
 import _qj from '../../assets/js/util.js'
 export default {
   name: 'evaluation',
@@ -58,13 +59,7 @@ export default {
       index: 1,
       questionCount: 0,
       hasNext: false,
-      subject: {
-        // content: '我喜欢在一群人面前展现自己',
-        // examId: 1,
-        // hasNext: true, // 是否还有下一题
-        // index: 55,
-        // questionCount: 78
-      },
+      subject: [],
       options: [
         {
           label: '几乎总是如此',
@@ -81,13 +76,9 @@ export default {
         {
           label: '从不如此',
           value: '4'
-        },
-        {
-          label: '这道题我没有感觉',
-          value: '5'
         }
       ],
-      value: '1'
+      value: []
     }
   },
   computed: {
@@ -102,64 +93,57 @@ export default {
     getSubject () {
       _qj.request({
         method: 'get',
-        url: 'c/api/get_question?index=' + this.index
+        url: 'c/api/query_question_list'
       }).then(res => {
         if (res.code === 0) {
           let data = res.data || {}
-          let {index = 0, questionCount = 0, hasNext = false} = data
-          data.value = String(data.value || '1')
-          this.subject = data
-          this.index = index
-          this.questionCount = questionCount
-          this.hasNext = hasNext
+          let questionList = data.questionList || []
+          this.subject = questionList
+          this.questionCount = questionList.length
+          this.value = Array(questionList.length).fill('1')
         } else {
           Toast(res.msg)
         }
       })
     },
     answerQuestion () {
+      let valueList = []
+      this.value.forEach(item => {
+        valueList.push(Number(item))
+      })
       _qj.request({
         method: 'post',
-        url: 'c/api/answer_one_question',
+        url: 'c/api/answer_all_question',
         data: {
-          index: this.subject.index,
-          value: Number(this.subject.value)
+          valueList: valueList
         }
       }).then(res => {
         if (res.code === 0) {
-          if (res.data.isFinished) {
-            // Toast({
-            //   message: '测试结束',
-            //   iconClass: 'icon icon-success'
-            // })
-            this.$router.push({
-              name: 'reports'
-            })
-          } else {
-            this.index += 1
-            this.getSubject()
-          }
+          Toast({
+            message: '提交成功',
+            iconClass: 'icon icon-success'
+          })
+          this.$router.push({
+            name: 'reports'
+          })
         } else {
           Toast(res.msg)
         }
       })
     },
     handlePrevious () {
-      this.index -= 1
-      this.getSubject()
+      if (this.index - 1 >= 1) {
+        this.index -= 1
+      }
     },
     handleNext () {
-      if (this.hasNext) {
-        this.answerQuestion()
+      if (this.index + 1 <= this.subject.length) {
+        this.index += 1
+      } else {
+        MessageBox.confirm('确定提交测试内容?').then(action => {
+          this.answerQuestion()
+        })
       }
-      // else {
-      //   MessageBox.confirm('确定提交测试内容?').then(action => {
-      //     Toast({
-      //       message: '提交成功',
-      //       iconClass: 'icon icon-success'
-      //     })
-      //   })
-      // }
     }
   }
 }

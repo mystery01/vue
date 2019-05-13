@@ -140,10 +140,6 @@ export default {
         {
           label: '从不如此',
           value: 'D'
-        },
-        {
-          label: '这道题我没有感觉',
-          value: 'E'
         }
       ]
     }
