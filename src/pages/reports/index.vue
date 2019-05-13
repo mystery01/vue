@@ -159,7 +159,7 @@ export default {
     }
     .report_hr{
       background #63a35c
-      margin .14rem .2rem
+      margin .2rem .2rem
       height .04rem
 
     }

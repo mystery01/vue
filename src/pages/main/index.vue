@@ -240,6 +240,7 @@ export default {
     }
     .main_des{
       .main_des_info{
+        margin-top .2rem
         line-height .17rem
       }
       .main_des_theme{
