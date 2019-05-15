@@ -6,6 +6,7 @@ import axios from 'axios'
 // let serverUrl = 'https://i_pre.qijizuopin.com/' // 打包部署上预发布时
 let serverUrl = 'http://39.106.231.192/' // 打包部署上线时
 
+// let serverUrl = 'http://empoweru.xyz.com/' // 打包部署上线时
 export default {
   request (param) {
     axios.defaults.withCredentials = true

@@ -1,37 +1,34 @@
 <template>
   <div class="report">
+    <div class="title_bg"></div>
     <div class="content">
-      <div class="title">
-        <span>麒麟臂</span>
-        <span>以下是你独一无二的优势</span>
+      <div class="container">
+        <p class="result">盖洛普青少年测评结果查询</p>
+        <span class="name"><span>{{name}}</span>以下是你独一无二的优势</span>
+        <div class="advantage">
+            <p>优势证明</p>
+            <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
+              <span>{{ele.name}}</span>
+              <span>{{ele.intro}}</span>
+            </div>
+        </div>
+        <div class="des">
+          <div class="text">完成报告会包含以下内容:</div>
+          <p><span class="radius"></span> 孩子优势的详细解读</p>
+          <p><span class="radius"></span> 孩子优势的相关形容词(大家会这样形容你)</p>
+          <p><span class="radius"></span> 孩子优势的相关主题解读</p>
+          <p><span class="radius"></span> 孩子优势的行动计划与建议</p>
+          <p class="explain">
+            想获取完整报告，请添加微信号: yesiran2011,或扫描下方二维码,完成转账,随后会微信给您发送报告,以及可以获得十五分钟的咨询时间
+          </p>
+          <span class="qrcode"></span>
+          <p class="price">完成报告限时售价 <span>30</span>元</p>
+          <p class="originPrice">原价100</p>
+        </div>
       </div>
-      <div class="advantage">
-          <p>优势证明</p>
-          <div class="advantage_item" v-for="(ele, index) in advantage" :key=index>
-            <span>{{ele.key}}</span>
-            <span>{{ele.value}}</span>
-          </div>
-      </div>
-      <div class="advantage">
-          <p>优势证明</p>
-          <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
-            <span>{{ele.name}}</span>
-            <span>{{ele.intro}}</span>
-          </div>
-      </div>
-      <div class="des">
-        <p>完成报告会包含以下内容:</p>
-        <p>孩子优势的详细解读</p>
-        <p>孩子优势的相关形容词(大家会这样形容你)</p>
-        <p>孩子优势的相关主题解读</p>
-        <p>孩子优势的行动计划与建议</p>
-        <p class="explain">
-          想获取完整报告，请添加微信号: yesiran2011,或扫描下方二维码,完成转账,随后会微信给您发送报告,以及可以获得十五分钟的咨询时间
-        </p>
-        <span class="qrcode"></span>
-        <p class="price">完成报告限时售价 30 <span>原价100</span> </p>
-      </div>
+      
     </div>
+    <div class="title_buttom"></div>
   </div>
 </template>
 <script>
@@ -41,20 +38,7 @@ export default {
     return {
       isLoading: false,
       themeList: [],
-      advantage: [
-        {
-          key: '独立',
-          value: '你非常负责且容易被人信任,别人很容易依赖你别人很容易依赖你别人很容易依赖你别人很容易依赖你别人很容易依赖你'
-        },
-        {
-          key: '独立',
-          value: '你非常负责且容易被人信任,别人很容易依赖你'
-        },
-        {
-          key: '独立',
-          value: '你非常负责且容易被人信任,别人很容易依赖你'
-        }
-      ]
+      name: ''
     }
   },
   computed: {
@@ -76,6 +60,7 @@ export default {
         url
       }).then((res)=>{
         this.themeList = res.data.themeList
+        this.name = res.data.childName
         console.log(res,'sdsdsdsd')
       })
     },
@@ -98,76 +83,130 @@ export default {
     width: 100%
     height: 100%
     font-size: .16rem
+    background: #5B7AFF
     color #333
+    .title_bg {
+      width 100%
+      height 1.28rem
+      background url('../../assets/images/common/image_title@2x.png')
+      background-size 100% 100%
+    }
     .content {
-      padding: .3rem
-      .title{
-        height: .5rem
-        line-height: .5rem
-        :nth-child(1) {
-          font-size .2rem
-        }
-        :nth-child(2) {
-        }
-      }
-      .advantage {
-        margin 0 auto
-        width 2.7rem
-        // height 2.5rem
-        border: .01rem solid #333
-        p {
-          margin .1rem auto .1rem auto
-          text-align center
-        }
-        .advantage_item {
-          margin-top .2rem
-          display: flex
-          justify-content center
-          margin-bottom .2rem
-          :nth-child(1) {
-            display flex
-            justify-content center
-            align-items center
-            width: .5rem
-            font-size .2rem
-          }
-          :nth-child(2) {
-            flex: 1
-            line-height .2rem
-          }
-        }
-      }
-      .des {
-        margin-top .2rem
-        width 100%
-        p {
-          margin-top .1rem;
-          font-size .14rem
-        }
-        :nth-child(1) {
+      padding: .15rem
+      margin-top -.15rem
+      .container {
+        padding: .15rem
+        background #ffffff
+        border-radius .04rem
+        .result {
           font-size .16rem
-          color: #333
+          color #363A4D 
+          height .13rem
+          margin-bottom .26rem !important
         }
-        .explain {
-          margin-top .3rem
-          line-height .26rem
-        }
-        .qrcode {
-          margin .1rem auto .1rem auto
-          display block
-          width 2rem
-          height 2rem
-          background url('../../assets/images/evaluationReport/qrcode.jpeg')
-          background-size: 100% 100%
-        }
-        .price {
-          font-weight 600
-          margin-top .24rem
+        .name {
+          font-size .12rem
+          color #363A4D
+          height .22rem
           span {
+            color #5978FF 
+            font-size .24rem
+            margin-right .1rem
+          }
+        }
+        .advantage {
+          margin .2rem auto .35rem auto
+          width 2.58rem
+          // height 2.58rem
+          border-radius .04rem
+          border: .01rem solid #333
+          p {
+            color #5877FF
+            font-size .2rem
+            margin .25rem auto .3rem auto
+            text-align center
+          }
+          .advantage_item {
+            margin-top .2rem
+            display: flex
+            justify-content center
+            margin-bottom .2rem
+            padding 0 .15rem .28rem .15rem
+            :nth-child(1) {
+              display flex
+              justify-content center
+              align-items center
+              font-size .2rem
+              color #5877FF
+            }
+            :nth-child(2) {
+              margin-left .1rem
+              font-size .14rem
+              color #363A4D
+              flex: 1
+              color #363A4D
+              line-height .2rem
+            }
+          }
+        }
+        .des {
+          margin-top .2rem
+          width 100%
+          p {
+            margin-top .1rem;
+            font-size .12rem
+            color #555B77
+            .radius {
+              display inline-block
+              width .04rem
+              height .04rem
+              border-radius .02rem
+              background-color #898C99
+            }
+          }
+          .text {
+            font-size .14rem
+            color #363A4D
+          }
+          .explain {
+            margin-top .46rem
+            font-size .16rem
+            color #363A4D
+            line-height .26rem
+            word-break break-all
+          }
+          .qrcode {
+            margin .28rem auto .28rem auto
+            display block
+            width 1.25rem
+            height 1.25rem
+            background url('../../assets/images/common/image_qr.png')
+            background-size: 100% 100%
+          }
+          .price {
+            text-align center
+            font-size .16rem
+            color #363A4D
+            span {
+              font-size .24rem
+              color #FFA366
+            }
+          }
+          .originPrice {
+            text-align center
+            font-size .16rem
+            color #363A4D
             text-decoration: line-through
           }
         }
       }
+      
+    }
+    .title_buttom {
+      width 100%
+      height .79rem
+      background url('../../assets/images/common/image_buttom@2x.png')
+      background-size 100% 100%
     }
   }
 </style>
