@@ -1,43 +1,49 @@
 <template>
   <div class="test_main">
-    <div class="main_des">
-      <div class="main_des_info">
-        盖洛普青少年测评一款基于积极心理学研发而成的，用于了解一个人自然而然地思考、感觉或行为的方式的测评。此测评可以辅助孩子了解自己的优势，用优势点亮人生，本测评相对市面测评有更久的历史，以及更细节，会测试动机层面，此次测评总共有10个主题，分别如下
-      </div>
-      <div class="main_des_theme">
-        <p class="des_theme" v-for="theme of themes" :key="theme">{{theme}}</p>
-      </div>
-    </div>
-    <div class="main_login">
-      <div class="login_title" v-if="!isLogin">
-        手机登录
-      </div>
-      <div class="login_form">
-        <div v-if="!isLogin">
-          <div class="form_item form_tel" >
-            <select class="input_tel_pre" name="" id="">
-              <option value="+86">+86</option>
-            </select>
-            <input placeholder="请输入手机号" type="tel" v-model="phone" />
+    <div class="title_bg"></div>
+    <div class="content">
+      <div class="container">
+        <div class="main_des">
+          <div class="main_des_info">
+            盖洛普青少年测评一款基于积极心理学研发而成的，用于了解一个人自然而然地思考、感觉或行为的方式的测评。此测评可以辅助孩子了解自己的优势，用优势点亮人生，本测评相对市面测评有更久的历史，以及更细节，会测试动机层面，此次测评总共有10个主题，分别如下
           </div>
-          <div class="form_code">
-            <div class="form_item">
-              <div class="input_pre">验证码</div>
-              <input placeholder="请输入验证码" v-model="captcha" />
+          <div class="main_des_theme">
+            <p class="des_theme" v-for="theme of themes" :key="theme">{{theme}}</p>
+          </div>
+        </div>
+        <div class="main_login">
+          <div class="login_title" v-if="!isLogin">
+            手机登录
+          </div>
+          <div class="login_form">
+            <div v-if="!isLogin">
+              <div class="form_item form_tel" >
+                <select class="input_tel_pre" name="" id="">
+                  <option value="+86">+86</option>
+                </select>
+                <input placeholder="请输入手机号" type="tel" v-model="phone" />
+              </div>
+              <div class="form_code">
+                <div class="form_item">
+                  <div class="input_pre">验证码</div>
+                  <input placeholder="请输入验证码" v-model="captcha" />
+                </div>
+                <mt-button v-if="seconds>0" class="form_code_load" type="default" size="small">剩余{{seconds}}s</mt-button>
+                <mt-button v-else class="form_code_load" type="danger" size="small" @click="getCode">获取验证码</mt-button>
+              </div>
             </div>
-            <mt-button v-if="seconds>0" class="form_code_load" type="default" size="small">剩余{{seconds}}s</mt-button>
-            <mt-button v-else class="form_code_load" type="danger" size="small" @click="getCode">获取验证码</mt-button>
+            <div class="login_already" v-else>
+              你好，{{phone}}
+            </div>
+            <div class="form_buttons">
+              <mt-button class="button_common" type="danger" size="small" @click="goReport">查看报告</mt-button>
+              <mt-button class="button_common" type="danger" size="small" @click="goTest">开始测评</mt-button>
+            </div>
           </div>
-        </div>
-        <div class="login_already" v-else>
-          你好，{{phone}}
-        </div>
-        <div class="form_buttons">
-          <mt-button class="button_common" type="danger" size="small" @click="goReport">查看报告</mt-button>
-          <mt-button class="button_common" type="danger" size="small" @click="goTest">开始测评</mt-button>
         </div>
       </div>
     </div>
+    <div class="title_buttom"></div>
   </div>
 </template>
 <script>
@@ -226,10 +232,7 @@ export default {
       width: 100%;
   }
   .test_main{
-    padding 0 0.1rem
-    height 100%
-    position absolute
-    background #fff
+    background #5B7AFF
     font-size .12rem
     color rgb(16, 16, 16)
     .main_title{
@@ -238,61 +241,82 @@ export default {
       line-height .25rem
       text-align center
     }
-    .main_des{
-      .main_des_info{
-        margin-top .2rem
-        line-height .17rem
-      }
-      .main_des_theme{
-        .des_theme{
-          line-height .2rem
-        }
-      }
+    .title_bg {
+      width 100%
+      height 1.28rem
+      background url('../../assets/images/common/image_title@2x.png')
+      background-size 100% 100%
     }
-    .login_already{
-      margin: .3rem 0;
-    }
-    .main_login{
-      .login_title{
-        font-weight 400
-        margin: .3rem 0 .2rem
-        font-size .18rem
-        line-height .25rem
-      }
-      .form_code{
-        display flex
-        justify-content space-between
-        .form_code_load{
-          margin-top .1rem
-          height: 0.45rem
-        }
-      }
-      .form_item{
-        height: 0.45rem
-        display flex
-        margin 0.1rem 0
-        background rgb(242, 242, 242)
+    .content {
+      padding: .15rem
+      margin-top -.15rem
+      .container {
+        padding: .15rem
+        background #ffffff
         border-radius .04rem
-        font-size .14rem!important
-        .input_pre{
-          line-height .45rem
-          width: .6rem
-          text-align center
+        .main_des{
+          .main_des_info{
+            margin-top .2rem
+            line-height .17rem
+          }
+          .main_des_theme{
+            .des_theme{
+              line-height .2rem
+            }
+          }
         }
-        .input_tel_pre{
-          line-height .45rem
-          padding-left .2rem
-          width: .6rem
+        .login_already{
+          margin: .3rem 0;
+        }
+        .main_login{
+          .login_title{
+            font-weight 400
+            margin: .3rem 0 .2rem
+            font-size .18rem
+            line-height .25rem
+          }
+          .form_code{
+            display flex
+            justify-content space-between
+            .form_code_load{
+              margin-top .1rem
+              height: 0.45rem
+            }
+          }
+          .form_item{
+            height: 0.45rem
+            display flex
+            margin 0.1rem 0
+            background rgb(242, 242, 242)
+            border-radius .04rem
+            font-size .14rem!important
+            .input_pre{
+              line-height .45rem
+              width: .6rem
+              text-align center
+            }
+            .input_tel_pre{
+              line-height .45rem
+              padding-left .2rem
+              width: .6rem
+            }
+          }
+          .form_buttons{
+            margin .35rem 0
+            display flex
+            justify-content space-around
+          }
+          .button_common{
+            height: 0.45rem
+          }
         }
       }
-      .form_buttons{
-        margin .35rem 0
-        display flex
-        justify-content space-around
-      }
-      .button_common{
-        height: 0.45rem
-      }
+    }
+    .title_buttom {
+      width 100%
+      height .79rem
+      background url('../../assets/images/common/image_buttom@2x.png')
+      background-size 100% 100%
     }
   }
 </style>

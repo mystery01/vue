@@ -7,8 +7,8 @@
 
   .wrapper {
     background: #FFF;
-    margin: 0 0.15rem 0.15rem 0.15rem;
-    border-radius: 0.10rem;
+    margin: -.15rem 0.15rem 0 0.15rem;
+    border-radius: 0.04rem;
     padding: 0.3rem 0.15rem;
   }
 
@@ -117,7 +117,12 @@
   .mint-cell-value {
     margin-right: 7.5vw;
   }
-
+  .title_buttom {
+      width: 100%;
+      height: .79rem;
+      background: url('../../assets/images/common/image_buttom@2x.png');
+      background-size: 100% 100%;
+    }
 </style>
 
 <template>
@@ -219,6 +224,7 @@
         </div>
       </div>
     </div>
+    <div class="title_buttom"></div>
   </div>
 </template>
 

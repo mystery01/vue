@@ -13,7 +13,7 @@
   .wrapper {
     flex: 1;
     background: #FFF;
-    margin: 0 0.15rem 0.15rem 0.15rem;
+    margin: 0 0.15rem 0 0.15rem;
     border-radius: 0.10rem;
     padding: 0.4rem 0;
     display: flex;
@@ -58,6 +58,12 @@
   .mt-progress-runway, .mt-progress-progress {
     border-radius: 0.06rem;
   }
+  .title_buttom {
+      width: 100%;
+      height: .79rem;
+      background: url('../../assets/images/common/image_buttom@2x.png');
+      background-size: 100% 100%;
+    }
 </style>
 
 <template>
@@ -99,6 +105,7 @@
         </div>
       </div>
     </div>
+    <div class="title_buttom"></div>
   </div>
 </template>
 
