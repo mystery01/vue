@@ -1,6 +1,31 @@
 <style>
+  .evaluation {
+    background: #5978FF;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .title-image {
+    width: 3.75rem;
+    height: 1.26rem;
+  }
+  .wrapper {
+    flex: 1;
+    background: #FFF;
+    margin: 0 0.15rem 0.15rem 0.15rem;
+    border-radius: 0.10rem;
+    padding: 0.4rem 0;
+    display: flex;
+    flex-direction: column;
+  }
   .evaluation-header, .evaluation-footer {
     padding: 10px;
+    /*background: #5978FF;*/
+  }
+  .evaluation-header {
+    margin-top: -0.15rem;
+    height: 1rem;
   }
   .evaluation-title {
     font-size: 0.18rem;
@@ -10,44 +35,69 @@
   .progress-detail {
     text-align: center;
     font-size: 0.16rem;
+    font-weight: 700;
   }
 
   .mint-cell, .mint-cell-wrapper {
     background: transparent !important;
     padding: 0 !important;
   }
+  .evaluation-body {
+    flex: 1;
+  }
   .evaluation-body .mint-radiolist-title {
-    font-size: 0.22rem;
+    font-size: 0.16rem;
     color: #333 !important;
+  }
+  .evaluation-footer {
+    height: 0.6rem;
   }
   .evaluation-footer button.mint-button:last-child {
     margin-top: 0.15rem;
+  }
+  .mt-progress-runway, .mt-progress-progress {
+    border-radius: 0.06rem;
   }
 </style>
 
 <template>
   <div class="evaluation">
-    <div class="evaluation-header">
-      <div>
-        <img src="require('../../assets/images/image_title@2x.png')" alt="">
-      </div>
-      <h3 class="evaluation-title">盖洛普青少年测试</h3>
-      <mt-progress :value="progress" :bar-height="10"></mt-progress>
-      <div class="progress-detail" v-if="questionCount">{{index}}/{{questionCount}}</div>
+    <div class="title-image">
+      <img :src="require('../../assets/images/common/image_title@2x.png')" alt="" style="width: 100%;">
     </div>
-    <div class="evaluation-body">
-      <div class="evaluation-subject" v-for="(item, i) in subject" :key="i">
-        <mt-radio
-          v-if="(i + 1) === index"
-          :title="item"
-          v-model="value[i]"
-          :options="options">
-        </mt-radio>
+    <div class="wrapper">
+      <div class="evaluation-header">
+        <div style="display: flex;">
+          <div style="flex: 1;font-size: 0.16rem;color: #C6CBE0;">0</div>
+          <div style="flex: 1;">
+            <div class="progress-detail" v-if="questionCount">{{index}}/{{questionCount}}</div>
+          </div>
+          <div style="flex: 1;font-size: 0.16rem;text-align: right;color: #C6CBE0;">{{questionCount}}</div>
+        </div>
+        <mt-progress :value="progress" :bar-height="12" style="border-radius: 0.06rem;"></mt-progress>
+        <div style="color: #FF0000;text-align: right;font-size: 0.12rem;">请一次性完成，不要在中途退出。</div>
       </div>
-    </div>
-    <div class="evaluation-footer">
-      <mt-button type="danger" size="large" @click="handleNext">{{index && subject.length && index === subject.length ? '提交' : '下一题'}}</mt-button>
-      <mt-button type="danger" size="large" @click="handlePrevious" :disabled="index === 1">上一题</mt-button>
+      <div class="evaluation-body">
+        <div class="evaluation-subject" v-for="(item, i) in subject" :key="i">
+          <mt-radio
+            v-if="(i + 1) === index"
+            :title="(i + 1) + '.' + item"
+            align="right"
+            v-model="value[i]"
+            :options="options">
+          </mt-radio>
+        </div>
+      </div>
+      <div class="evaluation-footer">
+        <div style="display: flex;">
+          <div style="flex: 1;padding: 0 0.1rem;">
+            <mt-button type="primary" size="large" @click="handleNext" style="background: #5B7AFF;">{{index && subject.length && index === subject.length ? '提交' : '下一题'}}</mt-button>
+          </div>
+          <div style="flex: 1;padding: 0 0.1rem;">
+            <mt-button type="danger" size="large" @click="handlePrevious" :disabled="index === 1" style="background: #FFA366;">上一题</mt-button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

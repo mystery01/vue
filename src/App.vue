@@ -46,4 +46,7 @@ export default {
   [v-cloak]{
     display:none!important
   }
+  #app {
+    height: 100%;
+  }
 </style>
