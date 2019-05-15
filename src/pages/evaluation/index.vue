@@ -28,6 +28,9 @@
 <template>
   <div class="evaluation">
     <div class="evaluation-header">
+      <div>
+        <img src="require('../../assets/images/image_title@2x.png')" alt="">
+      </div>
       <h3 class="evaluation-title">盖洛普青少年测试</h3>
       <mt-progress :value="progress" :bar-height="10"></mt-progress>
       <div class="progress-detail" v-if="questionCount">{{index}}/{{questionCount}}</div>
