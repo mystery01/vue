@@ -1,8 +1,5 @@
 <template>
   <div class="test_report">
-    <div class="report_title">
-      盖洛普青少年测评结果查询
-    </div>
     <div class="report_hr">
     </div>
     <div class="report_table">
@@ -12,30 +9,49 @@
             <th v-for="item of thead" :key="item">{{item}}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="tbody.length>0">
           <tr v-for="item in tbody" :key="item.id">
             <td>
-              {{item.mobile}}
+              {{parentPhone}}
             </td>
             <td>
               {{item.childName}}
             </td>
             <td>
-              <span v-for="child of item.theme_name_list" :key="child">
+              <span v-for="(child, index) in item.theme_name_list" :key="index">
                 {{child}}<br />
               </span>
             </td>
             <td>
-              {{item.ctime}}<br />{{item.ctime}}
+              {{item.ctime | dateFilter}}
+              <br />
+              {{item.ctime | timeFilter}}
             </td>
             <td>
-              <span class="option_common option_simple">
-                简版报告
-              </span>
-              <br />
-              <span class="option_common option_total">
-                完整报告
-              </span>
+              <div v-if="item.status==0">
+                <span class="option_common option_total">
+                  测验进行中
+                </span>
+              </div>
+              <div v-else>
+                <span class="option_common option_simple" @click="gotoReport">
+                  简版报告
+                </span>
+                <br />
+                <span class="option_common option_simple" v-if="item.status===50" @click="gotoDetail">
+                  完整报告
+                </span>
+                <span class="option_common option_total" v-else>
+                  完整报告
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tbody v-else>
+          <tr>
+            <td colspan="5">
+              未检测到数据。
             </td>
           </tr>
         </tbody>
@@ -62,45 +78,41 @@
 <script>
 import _qj from '../../assets/js/util'
 import { Toast } from 'mint-ui'
+import moment from 'moment'
 export default {
   data () {
     return {
-      phone: '',
-      captcha: '',
-      isLoading: false,
-      seconds: -1,
       items: [
         '孩子优势的详细解读', '孩子优势的相关形容词(大家会这样形容你)', '孩子的优势的相关主题解读', '孩子优势的行动计划与建议', '家长优势的行动计划与建议'
       ],
       thead: [
         '手机号', '孩子姓名', '优势', '测评时间', '报告'
       ],
-      tbody: [
-
-      ]
+      parentPhone: '',
+      tbody: []
     }
   },
   computed: {
+
   },
-  watch: {
-    seconds: function (value) {
-      let _self = this
-      setTimeout(() => {
-        if (value > 0) {
-          _self.timeRun()
-        }
-      }, 1000)
+  filters: {
+    dateFilter: function (data) {
+      return moment(data).format("YYYY-MM-DD")
+    },
+    timeFilter: function (data) {
+      return moment(data).format("HH:MM:SS")
     }
   },
   created () {
+    document.title = '盖洛普青少年测评结果查询'
     this.getList().then((data) => {
       if (data.code === 0) {
-        Toast('验证码已发送！')
+        this.parentPhone = data.data.parentPhone
         this.tbody = data.data.examList
       } else if (data.code === 401) {
         Toast('无查看权限!')
         setTimeout(() => {
-          this.$router.push('/main')
+          this.$router.push('/')
         }, 1000)
       } else if (data.code === 402) {
         Toast('没有找到进行中的测验!')
@@ -113,8 +125,11 @@ export default {
     })
   },
   methods: {
-    goReport () {
-      this.$router.push('/reports')
+    gotoDetail () {
+      this.$router.push('/detail')
+    },
+    gotoReport () {
+      this.$router.push('/report')
     },
     getList () {
       return _qj.request({
@@ -144,7 +159,7 @@ export default {
     }
     .report_hr{
       background #63a35c
-      margin .14rem .2rem
+      margin .2rem .2rem
       height .04rem
 
     }

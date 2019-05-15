@@ -1,8 +1,5 @@
 <template>
   <div class="test_main">
-    <div class="main_title">
-      盖洛普青少年测评
-    </div>
     <div class="main_des">
       <div class="main_des_info">
         盖洛普青少年测评一款基于积极心理学研发而成的，用于了解一个人自然而然地思考、感觉或行为的方式的测评。此测评可以辅助孩子了解自己的优势，用优势点亮人生，本测评相对市面测评有更久的历史，以及更细节，会测试动机层面，此次测评总共有10个主题，分别如下
@@ -12,23 +9,28 @@
       </div>
     </div>
     <div class="main_login">
-      <div class="login_title">
+      <div class="login_title" v-if="!isLogin">
         手机登录
       </div>
       <div class="login_form">
-        <div class="form_item form_tel" >
-          <select class="input_tel_pre" name="" id="">
-            <option value="+86">+86</option>
-          </select>
-          <input placeholder="请输入手机号" type="tel" v-model="phone" />
-        </div>
-        <div class="form_code">
-          <div class="form_item">
-            <div class="input_pre">验证码</div>
-            <input placeholder="请输入验证码" v-model="captcha" />
+        <div v-if="!isLogin">
+          <div class="form_item form_tel" >
+            <select class="input_tel_pre" name="" id="">
+              <option value="+86">+86</option>
+            </select>
+            <input placeholder="请输入手机号" type="tel" v-model="phone" />
           </div>
-          <mt-button v-if="seconds>0" class="form_code_load" type="default" size="small">剩余{{seconds}}s</mt-button>
-          <mt-button v-else class="form_code_load" type="danger" size="small" @click="getCode">获取验证码</mt-button>
+          <div class="form_code">
+            <div class="form_item">
+              <div class="input_pre">验证码</div>
+              <input placeholder="请输入验证码" v-model="captcha" />
+            </div>
+            <mt-button v-if="seconds>0" class="form_code_load" type="default" size="small">剩余{{seconds}}s</mt-button>
+            <mt-button v-else class="form_code_load" type="danger" size="small" @click="getCode">获取验证码</mt-button>
+          </div>
+        </div>
+        <div class="login_already" v-else>
+          你好，{{phone}}
         </div>
         <div class="form_buttons">
           <mt-button class="button_common" type="danger" size="small" @click="goReport">查看报告</mt-button>
@@ -50,7 +52,8 @@ export default {
       seconds: -1,
       themes: [
         '关心（Caring)', '关系 (Relating)', '自信（Confidence)', '存在（Presence)', '成就（Achieving)', '竞争（Competing)', '组织（Organizer)', '可靠（Dependability)', '发现（Discover）', '展望（Future Thinker)'
-      ]
+      ],
+      isLogin: false,
     }
   },
   computed: {
@@ -66,54 +69,70 @@ export default {
     }
   },
   created () {
-
+    document.title = '盖洛普青少年测评'
+    this.getList().then((data) => {
+      if (data.code === 0) {
+        this.isLogin = true
+        this.phone = data.data.parentPhone
+      } else if (data.code === 401) {
+        this.isLogin = false
+      }
+    })
   },
   methods: {
     goReport () {
-      if (this.checkCode()) {
-        Toast('请输入验证码！')
-        return false
-      }
-      this.login().then((data) => {
-        if (data.code === 0) {
-          this.$router.push('/reports')
-        } else if (data.code === 401) {
-          Toast('无查看权限!')
-          setTimeout(() => {
-            this.$router.push('/main')
-          }, 1000)
-        } else if (data.code === 402) {
-          Toast('没有找到进行中的测验!')
-          setTimeout(() => {
-            this.$router.push('/prepare')
-          }, 1000)
-        } else {
-          Toast(data.msg)
+      if (!this.isLogin) {
+        if (this.checkCode()) {
+          Toast('请输入验证码！')
+          return false
         }
-      })
+        this.login().then((data) => {
+          if (data.code === 0) {
+            this.$router.push('/reports')
+          } else if (data.code === 401) {
+            Toast('无查看权限!')
+            setTimeout(() => {
+              this.$router.push('/main')
+            }, 1000)
+          } else if (data.code === 402) {
+            Toast('没有找到进行中的测验!')
+            setTimeout(() => {
+              this.$router.push('/prepare')
+            }, 1000)
+          } else {
+            Toast(data.msg)
+          }
+        })
+      } else {
+        this.$router.push('/reports')
+      }
     },
     goTest () {
-      if (this.checkCode()) {
-        Toast('请输入验证码！')
-        return false
-      }
-      this.login().then((data) => {
-        if (data.code === 0) {
-          this.$router.push('/prepare')
-        } else if (data.code === 401) {
-          Toast('无查看权限!')
-          setTimeout(() => {
-            this.$router.push('/main')
-          }, 1000)
-        } else if (data.code === 402) {
-          Toast('没有找到进行中的测验!')
-          setTimeout(() => {
-            this.$router.push('/prepare')
-          }, 1000)
-        } else {
-          Toast(data.msg)
+      if (!this.isLogin) {
+        if (!this.isLogin && this.checkCode()) {
+          Toast('请输入验证码！')
+          return false
         }
-      })
+        this.login().then((data) => {
+          if (data.code === 0) {
+            this.$router.push('/prepare')
+          } else if (data.code === 401) {
+            Toast('无查看权限!')
+            setTimeout(() => {
+              this.$router.push('/main')
+            }, 1000)
+          } else if (data.code === 402) {
+            Toast('没有找到进行中的测验!')
+            setTimeout(() => {
+              this.$router.push('/prepare')
+            }, 1000)
+          } else {
+            Toast(data.msg)
+          }
+        })
+      } else {
+        this.$router.push('/prepare')
+      }
     },
     getCode () {
       if (!this.checkMobile()) {
@@ -167,6 +186,12 @@ export default {
         url: 'c/api/login',
         data: param
       })
+    },
+    getList () {
+      return _qj.request({
+        method: 'GET',
+        url: 'c/api/query_exam_list'
+      })
     }
   },
   components: {
@@ -215,6 +240,7 @@ export default {
     }
     .main_des{
       .main_des_info{
+        margin-top .2rem
         line-height .17rem
       }
       .main_des_theme{
@@ -222,6 +248,9 @@ export default {
           line-height .2rem
         }
       }
+    }
+    .login_already{
+      margin: .3rem 0;
     }
     .main_login{
       .login_title{
