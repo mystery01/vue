@@ -1,17 +1,19 @@
 <template>
   <div class="report">
+    <div class="title_bg"></div>
     <div class="content">
-      <div class="title">
-        <span>麒麟臂</span>
-        <span>以下是你独一无二的优势</span>
+      <div class="container">
+        <p class="result">盖洛普青少年测评结果查询</p>
+        <span class="name"><span>{{name}}</span>以下是你独一无二的优势</span>
+        <Advantage :themeList = 'themeList'/>
+        <Menu />
+        <ThreeAdvantageDetail :themeList = 'themeList'/>
+        <Appearance :themeList = 'themeList'/>
+        <AdviseChr :themeList = 'themeList'/>
+        <AdvisePar :themeList = 'themeList'/>
       </div>
-      <Advantage />
-      <Menu />
-      <ThreeAdvantageDetail />
-      <Appearance />
-      <AdviseChr />
-      <AdvisePar />
     </div>
+    <div class="title_buttom"></div>
   </div>
 </template>
 <script>
@@ -27,7 +29,8 @@ export default {
   data () {
     return {
       isLoading: false,
-      themeList: []
+      themeList: [],
+      name: ''
     }
   },
   computed: {
@@ -48,6 +51,7 @@ export default {
         url
       }).then((res)=>{
         this.themeList = res.data.themeList
+        this.name = res.data.childName
         console.log(res,'sdsdsdsd')
       })
     },
@@ -75,19 +79,44 @@ export default {
   .report{
     width: 100%
     height: 100%
+    background: #5B7AFF
     font-size: .16rem
-    color #333
+    .title_bg {
+      width 100%
+      height 1.28rem
+      background url('../../assets/images/common/image_title@2x.png')
+      background-size 100% 100%
+    }
     .content {
-      padding: .3rem
-      .title{
-        height: .5rem
-        line-height: .5rem
-        :nth-child(1) {
-          font-size .2rem
+      padding: .15rem
+      margin-top -.15rem
+      .container {
+        padding: .15rem
+        background #ffffff
+        border-radius .04rem
+        .result {
+          font-size .16rem
+          color #363A4D 
+          height .13rem
+          margin-bottom .26rem !important
         }
-        :nth-child(2) {
+        .name {
+          font-size .12rem
+          color #363A4D
+          height .22rem
+          span {
+            color #5978FF 
+            font-size .24rem
+            margin-right .1rem
+          }
         }
       }
+    }
+    .title_buttom {
+      width 100%
+      height .79rem
+      background url('../../assets/images/common/image_buttom@2x.png')
+      background-size 100% 100%
     }
   }
 </style>

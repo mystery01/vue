@@ -1,16 +1,21 @@
 <template>
   <div class="adviseChr">
     <ReportTitle :title=title />
-    <div class="keyWord" v-for='(ele,index) in keyWord' :key=index>
-        <p>{{ele.key}}</p>
-        <div class="content">{{ele.value}}</div>
+    <div class="keyWord" v-for='(ele,index) in themeList' :key=index>
+        <p>{{ele.name}}</p>
+        <div class="content">
+          <p v-for='(ele) in ele.childActionList' :key=ele>{{ele}}</p>
+          <p>一些实例参考</p>
+          <p v-for='(ele) in ele.childExampleList' :key=ele>{{ele}}>{{ele}}</p>
+        </div>
     </div>
 </div>
-</template>
+</template> 
 <script>
 import ReportTitle from './reportTitle'
 export default {
   props: {
+    themeList: Array
   },
   data () {
     return {

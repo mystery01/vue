@@ -1,10 +1,10 @@
 <template>
   <div class="appearance">
     <ReportTitle :title=title />
-    <div class="keyWord" v-for='(ele,index) in keyWord' :key=index>
-        <p>{{ele.key}}</p>
+    <div class="keyWord" v-for='(ele,index) in themeList' :key=index>
+        <p>{{ele.name}}</p>
         <div class="content">
-          <div class="des" v-for='(element,index) in ele.value' :key=index>
+          <div class="des" v-for='(element,index) in ele.adjList' :key=index>
             {{element}}
           </div>
         </div>
@@ -15,6 +15,7 @@
 import ReportTitle from './reportTitle'
 export default {
   props: {
+    themeList: Array
   },
   data () {
     return {
