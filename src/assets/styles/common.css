@@ -1,3 +1,6 @@
+html,body {
+  height: 100%;
+}
 .category-1{
   color:#B5E2B5;
   border-color: #B5E2B5!important;
