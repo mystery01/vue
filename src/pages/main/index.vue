@@ -28,7 +28,7 @@
               <div class="form_item">
                 <input class="form_code" placeholder="请输入验证码" v-model="captcha" />
                 <mt-button v-if="seconds>0" class="form_code_load">剩余{{seconds}}s</mt-button>
-                <mt-button v-else class="form_code_load"@click="getCode">获取验证码</mt-button>
+                <mt-button v-else class="form_code_load" @click="getCode">获取验证码</mt-button>
               </div>
             </div>
             <div class="login_already" v-else>

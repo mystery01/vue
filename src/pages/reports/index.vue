@@ -52,7 +52,7 @@
             <img src="../../assets/images/common/image_qr.png" alt="二维码.jpg">
           </div>
           <div class="report_prize report_now_prize">
-            完整报告限时<span>30</span><font>元</font></p>
+            完整报告限时<span>30</span><font>元</font>
           </div>
           <div class="report_prize report_old_prize">
             原价100
