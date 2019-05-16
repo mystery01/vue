@@ -318,14 +318,16 @@ export default {
               width 2rem
               padding-left .16rem
               line-height .15rem
-              padding-top .14rem
+              padding-top .12rem
+              padding-bottom .13rem
             }
             .form_code{
               font-size .15rem
-              width 1.79rem
+              width 1.70rem
               padding-left .16rem
               line-height .15rem
-              padding-top .14rem
+              padding-top .12rem
+              padding-bottom .13rem
             }
             .form_code_load{
               width 1rem
