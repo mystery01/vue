@@ -242,7 +242,7 @@ export default {
   .test_main{
     background #5B7AFF
     font-size .12rem
-    height 100%
+    // height 100%
     color rgb(16, 16, 16)
     .main_title{
       margin .2rem
@@ -259,7 +259,9 @@ export default {
     .content {
       padding: .15rem
       margin-top -.15rem
+      height 6.28rem
       .container {
+        height 6.28rem
         padding: .09rem .17rem
         background #ffffff
         border-radius .04rem
@@ -364,8 +366,8 @@ export default {
     }
     .title_buttom {
       width 100%
-      position fixed
-      bottom 0
+      // position fixed
+      // bottom 0
       height .79rem
       background url('../../assets/images/common/image_buttom@2x.png')
       background-size 100% 100%
