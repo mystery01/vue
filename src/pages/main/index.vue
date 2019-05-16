@@ -4,11 +4,16 @@
     <div class="content">
       <div class="container">
         <div class="main_des">
+          <div class="main_des_tittle">
+            盖洛普青少年测评
+          </div>
           <div class="main_des_info">
-            盖洛普青少年测评一款基于积极心理学研发而成的，用于了解一个人自然而然地思考、感觉或行为的方式的测评。此测评可以辅助孩子了解自己的优势，用优势点亮人生，本测评相对市面测评有更久的历史，以及更细节，会测试动机层面，此次测评总共有10个主题，分别如下
+            盖洛普青少年测评一款基于积极心理学研发而成的，用于了解一个人自然而然地思考、感觉或行为的方式的测评。此测评可以辅助孩子了解自己的优势，用优势点亮人生，本测评相对市面测评有更久的历史，以及更细节，会测试动机层面，此次测评总共有10个主题，分别如下：
           </div>
           <div class="main_des_theme">
-            <p class="des_theme" v-for="theme of themes" :key="theme">{{theme}}</p>
+            <p class="des_theme" v-for="theme of themes" :key="theme.value" :style="{background: theme.themeBgc, width: theme.width+'rem', top: theme.top+'rem', left: theme.left+'rem'}">
+              {{theme.value}} <span>{{theme.evalue}}</span>
+            </p>
           </div>
         </div>
         <div class="main_login">
@@ -17,27 +22,21 @@
           </div>
           <div class="login_form">
             <div v-if="!isLogin">
-              <div class="form_item form_tel" >
-                <select class="input_tel_pre" name="" id="">
-                  <option value="+86">+86</option>
-                </select>
-                <input placeholder="请输入手机号" type="tel" v-model="phone" />
+              <div class="form_item" >
+                <input class="form_tel" placeholder="请输入手机号" type="tel" v-model="phone" />
               </div>
-              <div class="form_code">
-                <div class="form_item">
-                  <div class="input_pre">验证码</div>
-                  <input placeholder="请输入验证码" v-model="captcha" />
-                </div>
-                <mt-button v-if="seconds>0" class="form_code_load" type="default" size="small">剩余{{seconds}}s</mt-button>
-                <mt-button v-else class="form_code_load" type="danger" size="small" @click="getCode">获取验证码</mt-button>
+              <div class="form_item">
+                <input class="form_code" placeholder="请输入验证码" v-model="captcha" />
+                <mt-button v-if="seconds>0" class="form_code_load">剩余{{seconds}}s</mt-button>
+                <mt-button v-else class="form_code_load"@click="getCode">获取验证码</mt-button>
               </div>
             </div>
             <div class="login_already" v-else>
-              你好，{{phone}}
+              您好，<span class="login_user">{{phone}}</span>
             </div>
             <div class="form_buttons">
-              <mt-button class="button_common" type="danger" size="small" @click="goReport">查看报告</mt-button>
-              <mt-button class="button_common" type="danger" size="small" @click="goTest">开始测评</mt-button>
+              <mt-button class="button_common" @click="goReport">查看报告</mt-button>
+              <mt-button class="button_common button_orange" @click="goTest">开始测评</mt-button>
             </div>
           </div>
         </div>
@@ -57,7 +56,16 @@ export default {
       isLoading: false,
       seconds: -1,
       themes: [
-        '关心（Caring)', '关系 (Relating)', '自信（Confidence)', '存在（Presence)', '成就（Achieving)', '竞争（Competing)', '组织（Organizer)', '可靠（Dependability)', '发现（Discover）', '展望（Future Thinker)'
+        {themeBgc: '#BCCA8C', value: '组织', evalue: '(Organizer)', left: .44, top: 0, width: 1.03},
+        {themeBgc: '#D4A69A', value: '关系', evalue: '(Relating)', left: 1.55, top: 0, width: .88},
+        {themeBgc: '#FDBF77', value: '自信', evalue: '(Confidence)', left: 0, top: .33, width: 1.03},
+        {themeBgc: '#CCBC95', value: '存在', evalue: '(Presence)', left: 1.13, top: .33, width: .88},
+        {themeBgc: '#92B8A4', value: '成就', evalue: '(Achieving)', left: 2.08, top: .33, width: 1.03},
+        {themeBgc: '#92B8A4', value: '竞争', evalue: '(Competing)', left: 0, top: .66, width: 1.03},
+        {themeBgc: '#FDBF77', value: '关心', evalue: '(Caring)', left: 1.13, top: .66, width: .88},
+        {themeBgc: '#BCCA8C', value: '发现', evalue: '(Discover)', left: 2.08, top: .66, width: 1.03},
+        {themeBgc: '#CCBC95', value: '可靠', evalue: '(Dependability)', left: .30, top: .99, width: 1.23},
+        {themeBgc: '#D4A69A', value: '展望', evalue: '(Future Thinker)', left: 1.61, top: .99, width: 1.18},
       ],
       isLogin: false,
     }
@@ -251,63 +259,102 @@ export default {
       padding: .15rem
       margin-top -.15rem
       .container {
-        padding: .15rem
+        padding: .09rem .17rem
         background #ffffff
         border-radius .04rem
         .main_des{
+          .main_des_tittle{
+            line-height .47rem
+            color #363A4D
+            font-size .16rem
+            text-align left
+          }
           .main_des_info{
-            margin-top .2rem
-            line-height .17rem
+            font-size .12rem
+            line-height .21rem
+            text-align: justify;
           }
           .main_des_theme{
+            position relative
+            margin .14rem 0
+            height 1.25rem
             .des_theme{
-              line-height .2rem
+              position absolute
+              color #fff
+              line-height .25rem
+              margin-bottom .08rem
+              border-radius 0.01rem
+              text-align center
+              box-sizing border-box
+              span{
+                font-size .12rem
+              }
             }
           }
         }
         .login_already{
           margin: .3rem 0;
+          .login_user{
+            color #FFA366
+            font-size .2rem
+          }
         }
         .main_login{
           .login_title{
-            font-weight 400
-            margin: .3rem 0 .2rem
-            font-size .18rem
-            line-height .25rem
-          }
-          .form_code{
-            display flex
-            justify-content space-between
-            .form_code_load{
-              margin-top .1rem
-              height: 0.45rem
-            }
+            color #363A4D
+            margin-top: .3rem
+            font-size .16rem
+            line-height .20rem
           }
           .form_item{
-            height: 0.45rem
-            display flex
-            margin 0.1rem 0
-            background rgb(242, 242, 242)
+            margin .2rem 0
             border-radius .04rem
-            font-size .14rem!important
-            .input_pre{
-              line-height .45rem
-              width: .6rem
-              text-align center
+            width 2.95rem
+            height .42rem
+            border:0.01rem solid rgba(91,122,255,1);
+            overflow hidden
+            .form_tel{
+              font-size .15rem
+              width 2rem
+              padding-left .16rem
+              line-height .15rem
+              padding-top .14rem
             }
-            .input_tel_pre{
-              line-height .45rem
-              padding-left .2rem
-              width: .6rem
+            .form_code{
+              font-size .15rem
+              width 1.79rem
+              padding-left .16rem
+              line-height .15rem
+              padding-top .14rem
+            }
+            .form_code_load{
+              width 1rem
+              height .42rem
+              background #96AAFF
+              border-radius .0rem
+              float right
+              color #ffff
+              font-size .15rem
+              padding 0
             }
           }
           .form_buttons{
-            margin .35rem 0
+            margin .25rem 0
+            margin-top .34rem
             display flex
             justify-content space-around
           }
           .button_common{
-            height: 0.45rem
+            height: 0.47rem
+            width: 1.38rem
+            background: #5B7AFF
+            color #fff
+            border-radius .04rem
+            font-size .16rem
+          }
+          .button_orange{
+            background #FFA366
+            font-size .16rem
           }
         }
       }
