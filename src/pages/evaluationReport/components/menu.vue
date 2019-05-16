@@ -35,6 +35,8 @@ export default {
     p {
       margin-top .1rem
       margin-left .1rem
+      font-size .12rem
+      color #555B77
     }
   }
 </style>

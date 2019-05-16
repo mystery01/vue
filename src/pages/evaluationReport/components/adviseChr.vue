@@ -4,9 +4,9 @@
     <div class="keyWord" v-for='(ele,index) in themeList' :key=index>
         <p>{{ele.name}}</p>
         <div class="content">
-          <p v-for='(ele) in ele.childActionList' :key=ele>{{ele}}</p>
-          <p>一些实例参考</p>
-          <p v-for='(ele) in ele.childExampleList' :key=ele>{{ele}}>{{ele}}</p>
+          <p class="childActionList" v-for='(ele) in ele.childActionList' :key=ele><span class="radius"></span>{{ele}}</p>
+          <p class="childActionTitle">一些实例参考</p>
+          <p class="childActionDes" v-for='(ele) in ele.childActionList' :key=ele><span class="radius"></span>{{ele}}>{{ele}}</p>
         </div>
     </div>
 </div>
@@ -53,14 +53,49 @@ export default {
     }
     .keyWord {
       .content {
-        margin-top .1rem
-        font-size .16rem
-        padding .15rem .1rem .15rem .1rem
-        border: .01rem dashed #333
+        padding 0 .1rem .15rem .1rem
         line-height .25rem
+        .childActionList {
+          font-size .12rem
+          color #555B77
+          position relative
+          .radius {
+            position absolute
+            top .2rem
+            left -.1rem
+            margin-top -.1rem
+            margin-right .05rem
+            display inline-block
+            width .04rem
+            height .04rem
+            background #898C99
+          }
+        }
+        .childActionTitle {
+            font-size .14rem
+            color #363a4d
+        }
+        .childActionDes {
+          margin-top .02rem
+          font-size .12rem
+          color #555b77
+          position relative
+          .radius {
+            position absolute
+            top .2rem
+            left -.1rem
+            margin-top -.1rem
+            margin-right .05rem
+            display inline-block
+            width .04rem
+            height .04rem
+            background #898C99
+          }
+        }
       }
       p {
-        font-size .2rem
+        font-size .14rem
+        color #363A4D
       }
     }
   }

@@ -40,16 +40,20 @@ export default {
     p {
       margin-top .1rem
       line-height .25rem
+      color #555B77
+      font-size .12rem
     }
     .keyWord {
       .content {
-        font-size .16rems
-        padding .15rem .1rem .15rem .1rem
-        border: .01rem dashed #333
+        font-size .12rem
+        padding .15rem auto
         line-height .25rem
+        color #555B77
+
       }
       p {
-        font-size .2rem
+        color #363A4D
+        font-size .14rem
       }
     }
   }

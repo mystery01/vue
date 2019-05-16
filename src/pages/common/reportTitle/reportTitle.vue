@@ -36,8 +36,8 @@ export default {
     .under_line {
       margin-top .1rem
       display: block
-      height: .03rem
-      background: orange
+      height: .08rem
+      background: #FFA366
       margin-bottom: .1rem
     }
   }

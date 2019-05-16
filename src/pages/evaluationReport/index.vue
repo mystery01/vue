@@ -8,7 +8,7 @@
         <div class="advantage">
             <p>优势证明</p>
             <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
-              <span>{{ele.name}}</span>
+              <p>{{ele.name}}</p>
               <span>{{ele.intro}}</span>
             </div>
         </div>
@@ -116,34 +116,28 @@ export default {
         }
         .advantage {
           margin .2rem auto .35rem auto
-          width 2.58rem
+          width 3.08rem
           // height 2.58rem
           border-radius .04rem
-          border: .01rem solid #333
+          border: .01rem solid #5877FF
           p {
             color #5877FF
             font-size .2rem
-            margin .25rem auto .3rem auto
+            margin .15rem auto .1rem auto
             text-align center
           }
           .advantage_item {
-            margin-top .2rem
-            display: flex
-            justify-content center
-            margin-bottom .2rem
-            padding 0 .15rem .28rem .15rem
+            margin-top .1rem
+            margin-bottom .07rem
+            padding 0rem .15rem .05rem
             :nth-child(1) {
-              display flex
-              justify-content center
-              align-items center
-              font-size .2rem
+              font-size .16rem
+              text-align left
               color #5877FF
             }
             :nth-child(2) {
-              margin-left .1rem
-              font-size .14rem
+              font-size .12rem
               color #363A4D
-              flex: 1
               color #363A4D
               line-height .2rem
             }

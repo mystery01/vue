@@ -57,13 +57,19 @@ export default {
       font-size .2rem
     }
     .keyWord {
+      p {
+        color #363A4D
+        font-size .14rem
+      }
       .content {
         margin-top .1rem
         padding .15rem .1rem .15rem .1rem
-        border: .01rem dashed #333
+        border: .01rem dashed #FFA366
+        border-radius .04rem
         line-height .25rem
         .des {
-          font-size .16rem
+          font-size .12rem
+          color #555B77
         }
       }
     }

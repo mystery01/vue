@@ -242,6 +242,7 @@ export default {
   .test_main{
     background #5B7AFF
     font-size .12rem
+    height 100%
     color rgb(16, 16, 16)
     .main_title{
       margin .2rem
@@ -363,6 +364,8 @@ export default {
     }
     .title_buttom {
       width 100%
+      position fixed
+      bottom 0
       height .79rem
       background url('../../assets/images/common/image_buttom@2x.png')
       background-size 100% 100%

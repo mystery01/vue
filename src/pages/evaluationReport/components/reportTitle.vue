@@ -31,14 +31,16 @@ export default {
     font-size .16rem
     color #333
     .report_title {
-      font-weight 600
+      color #363A4D
+      font-size .14rem
     }
     .under_line {
-      margin-top .1rem
+      margin-top -.05rem
       display: block
-      height: .03rem
-      background: orange
-      margin-bottom: .1rem
+      height: .08rem
+      width 1.2rem
+      background: #FFA366
+      margin-bottom: .15rem
     }
   }
 </style>

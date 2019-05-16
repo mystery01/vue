@@ -6,15 +6,16 @@
     <div class="keyWord" v-for='(ele,index) in themeList' :key=index>
         <p>{{ele.name}}</p>
         <div class="content">
-          <p v-for='(ele) in ele.parentActionList' :key=ele>{{ele}}</p>
+          <p class="childActionList"  v-for='(ele) in ele.parentActionList' :key=ele><span class="radius"></span>{{ele}}</p>
         </div>
+        <div v-show="index === 2" class="question" >
+          <p class="discuss">你可以和孩子一起讨论的问题</p>
+          <div class="questionBox" v-for='(element,ind) in ele.discussionList' :key=element>
+              <p class="ques">{{`${ind+1}. ${element}`}}</p>
+          </div>
+      </div>
     </div>
-    <div class="question" >
-        <p>你可以和孩子一起讨论的问题</p>
-        <div class="questionBox" v-for='(ele,index) in question' :key=index>
-            <p>{{`${index+1}. ${ele.value}`}}</p>
-        </div>
-    </div>
+    
 </div>
 </template>
 <script>
@@ -63,23 +64,49 @@ export default {
     p {
       margin-top .1rem
       line-height .25rem
+      color #555B77
+      font-size .12rem
     }
     .keyWord {
       .content {
-        margin-top .1rem
-        font-size .16rem
-        padding .15rem .1rem .15rem .1rem
-        border: .01rem dashed #333
+        padding 0 .1rem .15rem .1rem
         line-height .25rem
+        .childActionList {
+          font-size .12rem
+          color #555B77
+          position relative
+          .radius {
+            position absolute
+            top .2rem
+            left -.1rem
+            margin-top -.1rem
+            margin-right .05rem
+            display inline-block
+            width .04rem
+            height .04rem
+            background #898C99
+          }
+        }
       }
       p {
-        font-size .2rem
+        font-size .14rem
+        color #363A4D
       }
-    }
-    .question {
-      padding .15rem .1rem .15rem .1rem
-      border: .01rem dashed #333
-      .questionBox {
+      .question {
+        padding 0rem .1rem .15rem .1rem
+        .discuss {
+          margin-left -.15rem
+          font-size .14rem
+          color #363A4D
+        }
+        .questionBox {
+          p {
+            margin-top .05rem
+            line-height .2rem
+            font-size .12rem
+            color #555B77
+          }
+        }
       }
     }
   }
