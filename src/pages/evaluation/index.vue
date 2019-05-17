@@ -12,17 +12,20 @@
   }
   .wrapper {
     background: #FFF;
-    margin: 0 0.15rem 0 0.15rem;
+    flex: 1;
+    margin: 0 0.15rem .3rem 0.15rem;
     border-radius: 0.10rem;
     display: flex;
     flex-direction: column;
+  }
+  .evaluation-header {
+    margin-top: .15rem;
   }
   .evaluation-header, .evaluation-footer {
     padding: 10px;
     /*background: #5978FF;*/
   }
   .evaluation-header {
-    margin-top: -0.15rem;
     height: 1rem;
   }
   .evaluation-title {
@@ -103,7 +106,7 @@
         </div>
       </div>
     </div>
-    <div class="title_buttom"></div>
+    <!-- <div class="title_buttom"></div> -->
   </div>
 </template>
 

@@ -27,11 +27,19 @@
     font-size: 0.12rem;
     line-height: 0.20rem;
     padding-top: 0.2rem;
+    color: #363A4D;
     padding-bottom: 0.3rem;
   }
 
   .pre-body {
     padding: 0.15rem 0;
+    font-size: .14rem;
+    color: #898C99;
+    
+  }
+   .pre-body .mint-cell-value {
+    margin-right: 9vw;
+    
   }
 
   .pre-body .mint-cell-title {
@@ -45,6 +53,7 @@
 
   .desc-title {
     font-size: 0.14rem;
+    color: #363A4D;
     line-height: 0.4rem;
   }
 
@@ -59,10 +68,11 @@
     font-size: 0.12rem;
     padding: 0.05rem 0;
     line-height: 0.18rem;
+    color: #555B77;
   }
 
   .mint-radiolist-title {
-    font-size: 0.19rem;
+    font-size: 0.22rem;
     color: #363A4D;
   }
 
@@ -79,6 +89,7 @@
     font-weight: 900;
     text-align: center;
     width: 60%;
+    color: #363A4D;
     padding: 0 20%;
   }
 
@@ -145,6 +156,7 @@
       <mt-datetime-picker
         ref="picker"
         type="date"
+        :startDate='startDate'
         @confirm="handleConfirm">
       </mt-datetime-picker>
       <div class="pre-body">
@@ -218,9 +230,9 @@
           </mt-radio>
         </div>
         <div class="pre-btn">
-          <p>请把手机给您的孩子，</p>
+          <p>请把手机给您的孩子</p>
           <p>开始发现他/她的优势吧</p>
-          <mt-button type="danger" size="large" @click="startExam" style="background: #FFA366;">开始正式测评</mt-button>
+          <mt-button type="danger" size="large" @click="startExam" style="background: #FFA366;font-size: .16rem;">开始正式测评</mt-button>
         </div>
       </div>
     </div>
@@ -236,6 +248,7 @@ export default {
   name: 'prepare',
   data () {
     return {
+      startDate: new Date('2000-01-01'),
       username: '',
       sex: 0,
       birthday: '',
@@ -279,9 +292,11 @@ export default {
   },
   methods: {
     openPicker () {
+      document.body.style.overflow = 'hidden'
       this.$refs.picker.open()
     },
     handleConfirm (value) {
+      document.body.style.overflow = 'auto'
       this.birthday = moment(new Date(value)).format('YYYY-MM-DD')
     },
     startExam () {
