@@ -11,11 +11,9 @@
     height: 1.26rem;
   }
   .wrapper {
-    flex: 1;
     background: #FFF;
     margin: 0 0.15rem 0 0.15rem;
     border-radius: 0.10rem;
-    padding: 0.4rem 0;
     display: flex;
     flex-direction: column;
   }
@@ -97,10 +95,10 @@
       <div class="evaluation-footer">
         <div style="display: flex;">
           <div style="flex: 1;padding: 0 0.1rem;">
-            <mt-button type="primary" size="large" @click="handleNext" style="background: #5B7AFF;">{{index && subject.length && index === subject.length ? '提交' : '下一题'}}</mt-button>
+            <mt-button type="danger" size="large" @click="handlePrevious" :disabled="index === 1" style="background: #FFA366;">上一题</mt-button>
           </div>
           <div style="flex: 1;padding: 0 0.1rem;">
-            <mt-button type="danger" size="large" @click="handlePrevious" :disabled="index === 1" style="background: #FFA366;">上一题</mt-button>
+            <mt-button type="primary" size="large" @click="handleNext" style="background: #5B7AFF;">{{index && subject.length && index === subject.length ? '提交' : '下一题'}}</mt-button>
           </div>
         </div>
       </div>

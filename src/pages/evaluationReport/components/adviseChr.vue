@@ -6,7 +6,7 @@
         <div class="content">
           <p class="childActionList" v-for='(ele) in ele.childActionList' :key=ele><span class="radius"></span>{{ele}}</p>
           <p class="childActionTitle">一些实例参考</p>
-          <p class="childActionDes" v-for='(ele) in ele.childActionList' :key=ele><span class="radius"></span>{{ele}}>{{ele}}</p>
+          <p class="childActionDes" v-for='(ele,index) in ele.childExampleList' :key=index><span class="radius"></span>{{ele}}>{{ele}}</p>
         </div>
     </div>
 </div>
