@@ -11,7 +11,7 @@
             盖洛普青少年测评一款基于积极心理学研发而成的，用于了解一个人自然而然地思考、感觉或行为的方式的测评。此测评可以辅助孩子了解自己的优势，用优势点亮人生，本测评相对市面测评有更久的历史，以及更细节，会测试动机层面，此次测评总共有10个主题，分别如下：
           </div>
           <div class="main_des_theme">
-            <p class="des_theme" v-for="theme of themes" :key="theme.value" :style="{background: theme.themeBgc, top: theme.top+'rem', left: theme.left+'rem'}">
+            <p class="des_theme" v-for="theme of themes" :key="theme.value" :style="{background: theme.themeBgc, width: theme.width+'rem', top: theme.top+'rem', left: theme.left+'rem'}">
               {{theme.value}} <span>{{theme.evalue}}</span>
             </p>
           </div>
