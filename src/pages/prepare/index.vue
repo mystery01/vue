@@ -39,7 +39,11 @@
   }
    .pre-body .mint-cell-value {
     margin-right: 9vw;
+    text-align: left;
     
+  }
+  .pre-body .mint-cell-value .mint-field-core {
+    text-align: left;
   }
 
   .pre-body .mint-cell-title {

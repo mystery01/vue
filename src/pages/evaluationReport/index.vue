@@ -81,7 +81,7 @@ export default {
 <style lang="stylus" scoped>
   .report{
     width: 100%
-    height: 100%
+    // height: 100%
     font-size: .16rem
     background: #5B7AFF
     color #333
