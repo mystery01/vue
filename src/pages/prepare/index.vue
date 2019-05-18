@@ -38,12 +38,12 @@
     
   }
    .pre-body .mint-cell-value {
-    margin-right: 9vw;
-    text-align: left;
+    /* margin-right: 9vw; */
+    /* text-align: left; */
     
   }
   .pre-body .mint-cell-value .mint-field-core {
-    text-align: left;
+    /* text-align: left; */
   }
 
   .pre-body .mint-cell-title {
@@ -173,7 +173,7 @@
 
         <mt-cell>
           <span slot="title">姓&ensp;&ensp;&ensp;&ensp;名</span>
-          <input type="text" class="mint-field-core" placeholder="请输入孩子姓名" v-model="username">
+          <input type="text" class="mint-field-core" placeholder="" v-model="username">
         </mt-cell>
         <!--<mt-cell>-->
           <!--<span slot="title">性&ensp;&ensp;&ensp;&ensp;别</span>-->
