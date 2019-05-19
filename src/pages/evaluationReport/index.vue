@@ -3,10 +3,10 @@
     <div class="title_bg"></div>
     <div class="content">
       <div class="container">
-        <p class="result">盖洛普青少年测评结果查询</p>
-        <span class="name"><span>{{name}}</span>以下是你独一无二的优势</span>
+        <p class="result">青少年测评结果查询</p>
+        <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
         <div class="advantage">
-            <p>优势证明</p>
+            <p>优势证书</p>
             <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
               <p>{{ele.name}}</p>
               <span>{{ele.intro}}</span>
@@ -14,16 +14,16 @@
         </div>
         <div class="des">
           <div class="text">完成报告会包含以下内容:</div>
-          <p><span class="radius"></span> 孩子优势的详细解读</p>
-          <p><span class="radius"></span> 孩子优势的相关形容词(大家会这样形容你)</p>
-          <p><span class="radius"></span> 孩子优势的相关主题解读</p>
-          <p><span class="radius"></span> 孩子优势的行动计划与建议</p>
+          <p><span class="radius"></span> 三大优势主题的详细解释</p>
+          <p><span class="radius"></span> 他人眼中您孩子的样子</p>
+          <p><span class="radius"></span> 给孩子的行动计划与建议</p>
+          <p><span class="radius"></span> 给父母的行动计划与建议</p>
           <p class="explain">
-            想获取完整报告，请添加微信号: yesiran2011,或扫描下方二维码,完成转账,随后会微信给您发送报告,以及可以获得十五分钟的咨询时间
+            如果您想获取完整报告， 请添加微信号MissCorrine，完成转账。付费成功后，完整报告将通过微信发送给您。 
           </p>
           <span class="qrcode"></span>
-          <p class="price">完成报告限时售价 <span>30</span>元</p>
-          <p class="originPrice">原价100</p>
+          <p class="price">完成报告限时售价 <span>39.9</span>元</p>
+          <p class="originPrice">原价79.9</p>
         </div>
       </div>
       
@@ -46,7 +46,7 @@ export default {
   watch: {
   },
   created () {
-    document.title = '盖洛普优势评测报告'
+    document.title = '优势评测报告'
   },
   mounted() {
     this.fetchData()

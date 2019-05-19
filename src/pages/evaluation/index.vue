@@ -5,6 +5,11 @@
     /* height: 100%; */
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
   .title-image {
     width: 3.75rem;
@@ -48,7 +53,7 @@
   }
   .evaluation-body .mint-radiolist-title {
     font-size: 0.16rem;
-    color: #333 !important;
+    color: #363A4D !important;
   }
   .evaluation-footer {
     height: 0.6rem;
@@ -64,7 +69,22 @@
       height: .79rem;
       background: url('../../assets/images/common/image_buttom@2x.png');
       background-size: 100% 100%;
-    }
+  }
+  .mint-radio-label {
+    font-size: .14rem;
+    color: #555B77;
+  }
+  .mint-radio-core {
+    width: .18rem;
+    height: .18rem;
+  }
+  .mint-radio-core::after {
+    width: .1rem;
+    height: .1rem;
+    position: absolute;
+    left: .032rem;
+    top: .035rem;
+  }
 </style>
 
 <template>
@@ -123,7 +143,7 @@ export default {
       subject: [],
       options: [
         {
-          label: '几乎总是如此',
+          label: '几乎总是如此（或总是如此）',
           value: '1'
         },
         {
@@ -135,7 +155,7 @@ export default {
           value: '3'
         },
         {
-          label: '从不如此',
+          label: '几乎从未如此（或从未如此）',
           value: '4'
         }
       ],

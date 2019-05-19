@@ -4,7 +4,7 @@
     <div class="content">
       <div class="container">
         <div class="report_title">
-          盖洛普优势测评报告
+          优势测评报告
         </div>
         <div class="report-item" v-for="item in tbody" :key="item.id">
           <p class="item-key">
@@ -46,16 +46,16 @@
         </div>
         <div class="report_des">
           <div class="report_des_info">
-            想获取完整报告，请添加微信号:yesiran2011，或扫描下方二维码，完整转账，随后会微信为你开通完整报告查看的链接，以及可以获得15分钟左右的咨询时间。
+            如果您想获取完整报告，请添加微信号MissCorrine，完成转账。付费成功后，完整报告将通过微信发送给您。
           </div>
           <div class="report_des_pic">
             <img src="../../assets/images/common/image_qr.png" alt="二维码.jpg">
           </div>
           <div class="report_prize report_now_prize">
-            完整报告限时<span>30</span><font>元</font>
+            完整报告限时<span> 39.9</span><font>元</font>
           </div>
           <div class="report_prize report_old_prize">
-            原价100
+            原价79.9
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default {
   data () {
     return {
       items: [
-        ' ● 孩子优势的详细解读', ' ● 孩子优势的相关形容词（大家会这样形容你）', ' ● 孩子的优势的相关主题解读', ' ● 孩子优势的行动计划与建议', ' ● 家长优势的行动计划与建议'
+        ' ● 三大优势主题的详细解释', ' ● 他人眼中您孩子的样子', ' ● 给孩子的行动计划与建议', ' ● 给父母的行动计划与建议'
       ],
       thead: [
         '手机号', '孩子姓名', '优势', '测评时间', '报告'

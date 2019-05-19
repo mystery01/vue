@@ -21,7 +21,7 @@ export default {
   },
   data () {
     return {
-      title: '孩子的行动建议',
+      title: '给孩子的行动计划与建议',
       keyWord: [
         {
           key: '可靠',

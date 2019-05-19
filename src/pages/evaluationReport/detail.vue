@@ -3,8 +3,8 @@
     <div class="title_bg"></div>
     <div class="content">
       <div class="container">
-        <p class="result">盖洛普青少年测评结果查询</p>
-        <span class="name"><span>{{name}}</span>以下是你独一无二的优势</span>
+        <p class="result">青少年测评结果查询</p>
+        <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
         <Advantage :themeList = 'themeList'/>
         <Menu />
         <ThreeAdvantageDetail :themeList = 'themeList'/>

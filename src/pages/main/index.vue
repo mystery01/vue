@@ -36,7 +36,7 @@
             </div>
             <div class="form_buttons">
               <mt-button class="button_common button_orange" @click="goTest">开始测评</mt-button>
-              <mt-button class="button_common" @click="goReport">查看报告</mt-button>
+              <mt-button class="button_common" @click="goReport">查看历史报告</mt-button>
             </div>
           </div>
         </div>

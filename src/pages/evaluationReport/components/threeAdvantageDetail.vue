@@ -19,7 +19,7 @@ export default {
   },
   data () {
     return {
-      title: '三大优势详解',
+      title: '三大优势主题的详细解释',
     }
   },
   computed: {

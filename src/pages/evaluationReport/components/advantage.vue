@@ -1,6 +1,6 @@
 <template>
   <div class="advantage">
-    <p>优势证明</p>
+    <p>优势证书</p>
     <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
       <p>{{ele.name}}</p>
       <span>{{ele.intro}}</span>

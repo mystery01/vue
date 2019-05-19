@@ -19,7 +19,7 @@ export default {
   },
   data () {
     return {
-      title: '大家会这样形容你',
+      title: '他人眼中您孩子的样子',
       keyWord: [
         {
           key: '可靠',

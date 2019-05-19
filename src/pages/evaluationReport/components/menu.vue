@@ -1,10 +1,10 @@
 <template>
   <div class="menu">
     <ReportTitle :title=title />
-    <p>三大优势详解</p>
-    <p>大家会这样形容你</p>
-    <p>孩子的行动建议</p>
-    <p>家长的行动建议</p>
+    <p>三大优势主题的详细解释</p>
+    <p>他人眼中您孩子的样子</p>
+    <p>给孩子的行动计划与建议</p>
+    <p>给父母的行动计划与建议</p>
 </div>
 </template>
 <script>

@@ -43,7 +43,7 @@
     
   }
   .pre-body .mint-cell-value .mint-field-core {
-    text-align: center;
+    /* text-align: center; */
   }
 
   .pre-body .mint-cell-title {
@@ -76,8 +76,11 @@
   }
 
   .mint-radiolist-title {
-    font-size: 0.22rem;
+    font-size: 0.18rem;
     color: #363A4D;
+  }
+  .mint-radio-label {
+    font-size: .16rem;
   }
 
   .pre-btn {
@@ -128,16 +131,21 @@
   .mint-cell-value {
     text-align: right;
   }
-
+  .mint-cell-title {
+    font-size: .16rem;
+  }
   .mint-cell-value {
     margin-right: 7.5vw;
+  }
+  .mint-cell-value input,span {
+    font-size: .16rem;
   }
   .title_buttom {
       width: 100%;
       height: .79rem;
       background: url('../../assets/images/common/image_buttom@2x.png');
       background-size: 100% 100%;
-    }
+  }
 </style>
 
 <template>
@@ -147,9 +155,9 @@
     </div>
     <div class="wrapper">
       <div class="pre-header">
-        <h3 class="pre-title">盖洛普青少年测试</h3>
+        <h3 class="pre-title">青少年测试</h3>
         <p class="pre-subtext">
-          我们是需要先收集一下您与孩子的相关的信息，这些信息也是您后面获取报告的完整凭据
+          我们需要收集您和孩子的相关信息，用于后期获取完整报告的凭证
         </p>
         <div class="line"></div>
       </div>
@@ -219,9 +227,10 @@
         <div class="pre-desc">
           <p class="desc-title">测评说明</p>
           <ul class="desc-content">
-            <li>1. 本次测试包含78道题</li>
-            <li>2. 每个问题会询问你是否经常发生这个行为，请按照第一反应来作答</li>
-            <li>3. 整个测评大概需要占用您的孩子15分钟</li>
+            <li>1. 本测评包含78道选择题</li>
+            <li>2. 每道题都会询问您发生行为的频率情况，例如 “几乎总是如此（或总是如此）"、"经常如此“、"偶尔如此”、“几乎从未如此（或从未如此）”。 请告知您的孩子务必按照第一反应作答</li>
+            <li>3. 整个测评大约需要15分钟，请让孩子在不易受干扰的环境一次性完成测评</li>
+            <li>4. 测评中断后，答题结果无法保留。请提醒孩子在完成测评后点击“提交”</li>
           </ul>
           <div class="line"></div>
           <p class="desc-title" style="padding-top: 0.15rem">下面是样例试题</p>
@@ -260,7 +269,7 @@ export default {
       value: 'A',
       options: [
         {
-          label: '几乎总是如此',
+          label: '几乎总是如此（或总是如此）',
           value: 'A'
         },
         {
@@ -272,7 +281,7 @@ export default {
           value: 'C'
         },
         {
-          label: '从不如此',
+          label: '几乎从未如此（或从未如此）',
           value: 'D'
         }
       ],
