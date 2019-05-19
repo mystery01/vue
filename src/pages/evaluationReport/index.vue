@@ -6,11 +6,15 @@
         <p class="result">青少年测评结果查询</p>
         <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
         <div class="advantage">
-            <p>优势证书</p>
+          <div class="bg">
+            <span class="top"></span>
+            <p class="word"></p>
             <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
               <p>{{ele.name}}</p>
               <span>{{ele.intro}}</span>
             </div>
+            <span class="top"></span>
+          </div>
         </div>
         <div class="des">
           <div class="text">完成报告会包含以下内容:</div>
@@ -21,7 +25,7 @@
           <p class="explain">
             如果您想获取完整报告，请添加微信号MissCorrine，完成转账。付费成功后，完整报告将通过微信发送给您。 
           </p>
-          <span class="qrcode"></span>
+          <img class="qrcode" src="../../assets/images/common/image_qr.png" alt="二维码.jpg">
           <p class="price">完成报告限时售价 <span>39.9</span>元</p>
           <p class="originPrice">原价79.9</p>
         </div>
@@ -106,10 +110,28 @@ export default {
         }
         .advantage {
           margin .2rem auto .35rem auto
-          width 3.08rem
+          width 2.88rem
           // height 2.58rem
-          border-radius .04rem
-          border: .01rem solid #5877FF
+          border: .03rem solid #B6831B
+          padding .1rem
+          .bg {
+            border: .02rem solid #B6831B
+            .top {
+              display block
+              width 2.03rem
+              height .26rem
+              margin .1rem auto .1rem auto
+              background url('../../assets/images/common/flower.png')
+              background-size: 100% 100%
+            }
+            .word{
+              width 1.51rem
+              height .43rem
+              margin .1rem auto 0 auto
+              background url('../../assets/images/common/words.png')
+              background-size: 100% 100%
+            }
+          }
           p {
             color #5877FF
             font-size .2rem
@@ -164,8 +186,9 @@ export default {
             display block
             width 1.25rem
             height 1.25rem
-            background url('../../assets/images/common/image_qr.png')
-            background-size: 100% 100%
+            // background url('../../assets/images/common/image_qr.png')
+            // background-size: 100% 100%
+            z-index 999
           }
           .price {
             text-align center

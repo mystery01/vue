@@ -232,6 +232,7 @@ export default {
               width: 1.47rem
               height 1.47rem
               background #ddd
+              z-index 999
             }
           }
           .report_prize{

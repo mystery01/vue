@@ -7,13 +7,13 @@
         <p>{{ele.name}}</p>
         <div class="content">
           <p class="childActionList"  v-for='(ele) in ele.parentActionList' :key=ele><span class="radius"></span>{{ele}}</p>
-        </div>
-        <div v-show="index === 2" class="question" >
-          <p class="discuss">你可以和孩子一起讨论的问题</p>
-          <div class="questionBox" v-for='(element,ind) in ele.discussionList' :key=element>
-              <p class="ques">{{`${ind+1}. ${element}`}}</p>
+          <div class="question" >
+            <p class="discuss">你可以和孩子一起讨论的问题</p>
+            <div class="questionBox" v-for='(element,ind) in ele.discussionList' :key=element>
+                <p class="ques">{{`${ind+1}. ${element}`}}</p>
+            </div>
           </div>
-      </div>
+        </div>
     </div>
     
 </div>
@@ -69,7 +69,10 @@ export default {
     }
     .keyWord {
       .content {
-        padding 0 .1rem .15rem .1rem
+        padding: 0.15rem 0.1rem 0.15rem 0.15rem;
+        border: 0.01rem dashed #ffa366;
+        border-radius: 0.04rem;
+        // padding 0 .1rem .15rem .1rem
         line-height .25rem
         .childActionList {
           font-size .12rem

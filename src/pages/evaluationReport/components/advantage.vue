@@ -1,9 +1,13 @@
 <template>
   <div class="advantage">
-    <p>优势证书</p>
-    <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
-      <p>{{ele.name}}</p>
-      <span>{{ele.intro}}</span>
+    <div class="bg">
+      <span class="top"></span>
+      <p class="word"></p>
+      <div class="advantage_item" v-for="(ele, index) in themeList" :key=index>
+        <p>{{ele.name}}</p>
+        <span>{{ele.intro}}</span>
+      </div>
+      <span class="top"></span>
     </div>
 </div>
 </template>
@@ -46,10 +50,29 @@ export default {
 <style lang="stylus" scoped>
   .advantage {
     margin .2rem auto .35rem auto
-    width 3.08rem
+    width 2.88rem
     // height 2.58rem
     border-radius .04rem
-    border: .01rem solid #5877FF
+    border: .03rem solid #B6831B
+    padding .1rem
+    .bg {
+      border: .02rem solid #B6831B
+      .top {
+        display block
+        width 2.03rem
+        height .26rem
+        margin .1rem auto .1rem auto
+        background url('../../../assets/images/common/flower.png')
+        background-size: 100% 100%
+      }
+      .word{
+        width 1.51rem
+        height .43rem
+        margin .1rem auto 0 auto
+        background url('../../../assets/images/common/words.png')
+        background-size: 100% 100%
+      }
+    }
     p {
       color #5877FF
       font-size .2rem

@@ -55,7 +55,10 @@ export default {
     }
     .keyWord {
       .content {
-        padding 0 .1rem .15rem .1rem
+        padding: 0.15rem 0.1rem 0.15rem 0.15rem;
+        border: 0.01rem dashed #ffa366;
+        border-radius: 0.04rem;
+        // padding 0 .1rem .15rem .1rem
         line-height .25rem
         .childActionList {
           font-size .12rem

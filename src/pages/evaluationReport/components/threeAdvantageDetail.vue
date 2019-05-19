@@ -45,6 +45,9 @@ export default {
     }
     .keyWord {
       .content {
+        padding: 0.15rem 0.1rem 0.15rem 0.1rem;
+        border: 0.01rem dashed #ffa366;
+        border-radius: 0.04rem;
         font-size .12rem
         padding .15rem auto
         line-height .25rem
