@@ -39,11 +39,11 @@
   }
    .pre-body .mint-cell-value {
     /* margin-right: 9vw; */
-    /* text-align: left; */
+    /* text-align: center; */
     
   }
   .pre-body .mint-cell-value .mint-field-core {
-    /* text-align: left; */
+    text-align: center;
   }
 
   .pre-body .mint-cell-title {
@@ -161,6 +161,7 @@
         ref="picker"
         type="date"
         :startDate='startDate'
+        @visible-change="handleValueChange"
         @confirm="handleConfirm">
       </mt-datetime-picker>
       <div class="pre-body">
@@ -173,7 +174,7 @@
 
         <mt-cell>
           <span slot="title">姓&ensp;&ensp;&ensp;&ensp;名</span>
-          <input type="text" class="mint-field-core" placeholder="" v-model="username">
+          <input type="text" class="mint-field-core" placeholder="请输入姓名 " v-model="username">
         </mt-cell>
         <!--<mt-cell>-->
           <!--<span slot="title">性&ensp;&ensp;&ensp;&ensp;别</span>-->
@@ -296,12 +297,23 @@ export default {
   },
   methods: {
     openPicker () {
-      document.body.style.overflow = 'hidden'
       this.$refs.picker.open()
     },
     handleConfirm (value) {
-      document.body.style.overflow = 'auto'
       this.birthday = moment(new Date(value)).format('YYYY-MM-DD')
+    },
+    handler (e) {
+      e.preventDefault()
+    },
+    // 解决点传问题
+    handleValueChange (val) {
+      if(val) {
+        document.body.style.overflow = 'hidden'
+        document.addEventListener('touchmove', this.handler, { passive: false })
+      } else {
+        document.body.style.overflow = 'auto'
+        document.removeEventListener('touchmove', this.handler, { passive: false })
+      }
     },
     startExam () {
       if (!this.username.trim()) {

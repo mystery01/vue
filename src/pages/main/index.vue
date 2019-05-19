@@ -5,16 +5,16 @@
       <div class="container">
         <div class="main_des">
           <div class="main_des_tittle">
-            盖洛普青少年测评
+            少儿优势测评
           </div>
           <div class="main_des_info">
-            盖洛普青少年测评一款基于积极心理学研发而成的，用于了解一个人自然而然地思考、感觉或行为的方式的测评。此测评可以辅助孩子了解自己的优势，用优势点亮人生，本测评相对市面测评有更久的历史，以及更细节，会测试动机层面，此次测评总共有10个主题，分别如下：
+            少儿优势测评基于积极心理学研发而成。它通过科学的测量发现”孩子是什么样的人” 。测评结果将呈现您孩子的三大主要驱动因子，帮您解答“孩子为什么会产生一些特定的行为”。此测评大约需要15分钟，由家长注册信息后，交由孩子填写完成。 现在，让我们开启了解孩子的旅程吧！
           </div>
-          <div class="main_des_theme">
+          <!-- <div class="main_des_theme">
             <p class="des_theme" v-for="theme of themes" :key="theme.value" :style="{background: theme.themeBgc, width: theme.width+'rem', top: theme.top+'rem', left: theme.left+'rem'}">
               {{theme.value}} <span>{{theme.evalue}}</span>
             </p>
-          </div>
+          </div> -->
         </div>
         <div class="main_login">
           <div class="login_title" v-if="!isLogin">
@@ -35,8 +35,8 @@
               您好，<span class="login_user">{{phone}}</span>
             </div>
             <div class="form_buttons">
-              <mt-button class="button_common" @click="goReport">查看报告</mt-button>
               <mt-button class="button_common button_orange" @click="goTest">开始测评</mt-button>
+              <mt-button class="button_common" @click="goReport">查看报告</mt-button>
             </div>
           </div>
         </div>

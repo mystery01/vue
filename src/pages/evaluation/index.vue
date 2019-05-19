@@ -184,9 +184,8 @@ export default {
             message: '提交成功',
             iconClass: 'icon icon-success'
           })
-          this.$router.push({
-            name: 'report'
-          })
+          const examId  = res.data.examId
+          this.$router.push(`/report/${examId}`)
         } else {
           Toast(res.msg)
         }

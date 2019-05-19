@@ -49,28 +49,18 @@ export default {
     document.title = '盖洛普优势评测报告'
   },
   mounted() {
-    this.getList()
-    
+    this.fetchData()
   },
   methods: {
     // 获取数据
-    fetchData(id) {
+    fetchData() {
+      const id = this.$route.params.id
       const url = `c/api/get_simple_report?exam_id=${id}`
       Api.request({
         url
       }).then((res)=>{
         this.themeList = res.data.themeList
         this.name = res.data.childName
-        console.log(res,'sdsdsdsd')
-      })
-    },
-    getList () {
-      Api.request({
-        method: 'GET',
-        url: 'c/api/query_exam_list'
-      }).then((res)=>{
-        let id = res.data.examList[0].id
-        this.fetchData(id)
       })
     }
   },

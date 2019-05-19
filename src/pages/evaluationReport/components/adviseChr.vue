@@ -4,9 +4,11 @@
     <div class="keyWord" v-for='(ele,index) in themeList' :key=index>
         <p>{{ele.name}}</p>
         <div class="content">
-          <p class="childActionList" v-for='(ele) in ele.childActionList' :key=ele><span class="radius"></span>{{ele}}</p>
-          <p v-show='ele.childExampleList.length>0' class="childActionTitle">一些实例参考</p>
-          <p v-show='ele.childExampleList.length>0' class="childActionDes" v-for='(ele,index) in ele.childExampleList' :key=index><span class="radius"></span>{{ele}}>{{ele}}</p>
+          <p class="childActionList" v-for='(item) in ele.childActionList' :key=item><span class="radius"></span>{{item}}</p>
+          <div v-if='ele.childExampleList.length>0'>
+            <p class="childActionTitle">一些实例参考</p>
+            <p class="childActionDes" v-for='(ele,index) in ele.childExampleList' :key=index><span class="radius"></span>{{ele}}</p>
+          </div>
         </div>
     </div>
 </div>

@@ -9,12 +9,12 @@ const router = new Router({
   // mode: 'history',
   routes: [
     { // 评测报告
-      path: '/report',
+      path: '/report/:id',
       name: 'report',
       component: () => import('@/pages/evaluationReport/index')
     },
     { // 详细评测报告
-      path: '/detail',
+      path: '/detail/:id',
       name: 'detail',
       component: () => import('@/pages/evaluationReport/detail')
     },
