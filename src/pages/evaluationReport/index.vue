@@ -19,7 +19,7 @@
           <p><span class="radius"></span> 给孩子的行动计划与建议</p>
           <p><span class="radius"></span> 给父母的行动计划与建议</p>
           <p class="explain">
-            如果您想获取完整报告， 请添加微信号MissCorrine，完成转账。付费成功后，完整报告将通过微信发送给您。 
+            如果您想获取完整报告，请添加微信号MissCorrine，完成转账。付费成功后，完整报告将通过微信发送给您。 
           </p>
           <span class="qrcode"></span>
           <p class="price">完成报告限时售价 <span>39.9</span>元</p>
