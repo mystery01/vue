@@ -155,7 +155,7 @@
     </div>
     <div class="wrapper">
       <div class="pre-header">
-        <h3 class="pre-title">青少年测试</h3>
+        <h3 class="pre-title">少儿优势测评</h3>
         <p class="pre-subtext">
           我们需要收集您和孩子的相关信息，用于后期获取完整报告的凭证
         </p>

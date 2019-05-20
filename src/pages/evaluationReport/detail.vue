@@ -3,7 +3,7 @@
     <div class="title_bg"></div>
     <div class="content">
       <div class="container">
-        <p class="result">青少年测评结果查询</p>
+        <p class="result">少儿优势测评结果查询</p>
         <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
         <Advantage :themeList = 'themeList'/>
         <Menu />
@@ -38,7 +38,7 @@ export default {
   watch: {
   },
   created () {
-    document.title = '盖洛普优势评测报告'
+    document.title = '少儿优势测评'
   },
   mounted() {
     this.fetchData()

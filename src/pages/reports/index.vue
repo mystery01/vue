@@ -92,7 +92,7 @@ export default {
     }
   },
   created () {
-    document.title = '盖洛普青少年测评结果查询'
+    document.title = '少儿优势测评'
 
 
 

@@ -83,7 +83,7 @@ export default {
     }
   },
   created () {
-    document.title = '盖洛普青少年测评'
+    document.title = '少儿优势测评'
     this.getList().then((data) => {
       if (data.code === 0) {
         this.isLogin = true
