@@ -50,7 +50,7 @@ export default {
   watch: {
   },
   created () {
-    document.title = '优势评测报告'
+    document.title = '少儿优势测评'
   },
   mounted() {
     this.fetchData()
