@@ -74,7 +74,11 @@
     line-height: 0.18rem;
     color: #555B77;
   }
-
+  .desc-content li span{
+    font-size: 0.14rem;
+    font-weight: 600;
+    color: #555B77;
+  }
   .mint-radiolist-title {
     font-size: 0.18rem;
     color: #363A4D;
@@ -228,9 +232,9 @@
           <p class="desc-title">测评说明</p>
           <ul class="desc-content">
             <li>1. 本测评包含50道选择题</li>
-            <li>2. 每道题都会询问您发生行为的频率情况，例如 “几乎总是如此（或总是如此）"、"经常如此“、"偶尔如此”、“几乎从未如此（或从未如此）”。 请告知您的孩子务必按照第一反应作答</li>
-            <li>3. 整个测评大约需要10分钟，请让孩子在不易受干扰的环境一次性完成测评</li>
-            <li>4. 测评中断后，答题结果无法保留。请提醒孩子在完成测评后点击“提交”</li>
+            <li>2. 每道题都会询问您发生行为的频率情况，例如 “几乎总是如此（或总是如此）"、"经常如此“、"偶尔如此”、“几乎从未如此（或从未如此）”。 请告知您的孩子务必按照<span>第一反应作答</span></li>
+            <li>3. 整个测评大约需要10分钟，请让孩子在<span>不易受干扰</span>的环境<span>一次性</span>完成测评</li>
+            <li>4. 测评中断后，<span>答题结果无法保留</span> 。请提醒孩子在完成测评后<span>点击“提交”</span></li>
           </ul>
           <div class="line"></div>
           <p class="desc-title" style="padding-top: 0.15rem">下面是样例试题</p>
