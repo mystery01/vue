@@ -6,11 +6,12 @@
         <p class="result">少儿优势测评结果查询</p>
         <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
         <Advantage :themeList = 'themeList'/>
+        <Words />
         <Menu />
         <ThreeAdvantageDetail :themeList = 'themeList'/>
         <Appearance :themeList = 'themeList'/>
-        <AdviseChr :themeList = 'themeList'/>
         <AdvisePar :themeList = 'themeList'/>
+        <AdviseChr :themeList = 'themeList'/>
       </div>
     </div>
     <div class="title_buttom"></div>
@@ -24,6 +25,7 @@ import ThreeAdvantageDetail from './components/threeAdvantageDetail'
 import Appearance from './components/appearance'
 import AdvisePar from './components/advisePar'
 import AdviseChr from './components/advisechr'
+import Words from './components/text'
 import Api from '../../assets/js/util'
 export default {
   data () {
@@ -58,6 +60,7 @@ export default {
   },
   components: {
     Advantage,
+    Words,
     Menu,
     ThreeAdvantageDetail,
     Appearance,

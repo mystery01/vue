@@ -8,7 +8,7 @@
             少儿优势测评
           </div>
           <div class="main_des_info">
-            少儿优势测评基于积极心理学研发而成。它通过科学的测量发现”孩子是什么样的人” 。测评结果将呈现您孩子的三大主要驱动因子，帮您解答“孩子为什么会产生一些特定的行为”。此测评大约需要15分钟，由家长注册信息后，交由孩子填写完成。 现在，让我们开启了解孩子的旅程吧！
+            少儿优势测评基于积极心理学研发而成。它通过科学的测量发现 “孩子是什么样的人” 。测评结果将呈现您孩子的三大主要驱动因子，帮您解答 “孩子为什么会产生一些特定的行为”。此测评大约需要15分钟，由家长注册信息后，交由孩子填写完成。 现在，让我们开启了解孩子的旅程吧！
           </div>
           <!-- <div class="main_des_theme">
             <p class="des_theme" v-for="theme of themes" :key="theme.value" :style="{background: theme.themeBgc, width: theme.width+'rem', top: theme.top+'rem', left: theme.left+'rem'}">
