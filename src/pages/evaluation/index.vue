@@ -139,19 +139,19 @@ export default {
       options: [
         {
           label: '几乎总是如此（或总是如此）',
-          value: '1'
+          value: '4'
         },
         {
           label: '经常如此',
-          value: '2'
-        },
-        {
-          label: '偶尔如此',
           value: '3'
         },
         {
+          label: '偶尔如此',
+          value: '2'
+        },
+        {
           label: '几乎从未如此（或从未如此）',
-          value: '4'
+          value: '1'
         }
       ],
       value: []
@@ -176,7 +176,7 @@ export default {
           let questionList = data.questionList || []
           this.subject = questionList
           this.questionCount = questionList.length
-          this.value = Array(questionList.length).fill('1')
+          this.value = Array(questionList.length).fill('')
         } else {
           Toast(res.msg)
         }
@@ -199,7 +199,7 @@ export default {
             message: '提交成功',
             iconClass: 'icon icon-success'
           })
-          const examId  = res.data.examId
+          const examId = res.data.examId
           this.$router.push(`/report/${examId}`)
         } else {
           Toast(res.msg)
@@ -213,7 +213,11 @@ export default {
     },
     handleNext () {
       if (this.index + 1 <= this.subject.length) {
-        this.index += 1
+        if (this.value[this.index - 1]) {
+          this.index += 1
+        } else {
+          Toast('请选择答案')
+        }
       } else {
         MessageBox.confirm('确定提交测试内容?').then(action => {
           this.answerQuestion()
