@@ -18,6 +18,11 @@ const router = new Router({
       name: 'detail',
       component: () => import('@/pages/evaluationReport/detail')
     },
+    { // 管理员详细评测报告
+      path: '/admin/:id/:phone',
+      name: 'admin',
+      component: () => import('@/pages/evaluationReport/admin')
+    },
     { // 测评首页
       path: '/',
       name: 'main',
