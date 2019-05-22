@@ -134,6 +134,7 @@
 
   .mint-cell-value {
     text-align: right;
+    font-size: .16rem;
   }
   .mint-cell-title {
     font-size: .16rem;
@@ -199,7 +200,7 @@
           <div class="mint-cell-left"></div>
           <div class="mint-cell-wrapper">
             <div class="mint-cell-title"><!----> <span>孩子性别:</span></div>
-            <div class="mint-cell-value is-link" @click="sexVisible = true"><span>{{sex === 0 ? '男' : '女'}}&ensp;</span></div>
+            <div class="mint-cell-value is-link" @click="sexVisible = true"><span style="font-size: 0.16rem">{{sex === 0 ? '男' : '女'}}&ensp;</span></div>
             <i class="mint-cell-allow-right"></i></div>
           <div class="mint-cell-right"></div>
         </a>
@@ -207,7 +208,7 @@
           <div class="mint-cell-left"></div>
           <div class="mint-cell-wrapper">
             <div class="mint-cell-title"><!----> <span>孩子出生日期:</span></div>
-            <div class="mint-cell-value is-link" @click="openPicker()"><span>{{birthday || '请选择'}}&ensp;</span></div>
+            <div class="mint-cell-value is-link" @click="openPicker()"><span style="font-size: 0.16rem">{{birthday || '请选择'}}&ensp;</span></div>
             <i class="mint-cell-allow-right"></i></div>
           <div class="mint-cell-right"></div>
         </a>
