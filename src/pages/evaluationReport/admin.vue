@@ -52,7 +52,7 @@ export default {
       const id = this.$route.params.id
       const phone = this.$route.params.phone
       console.log(id,phone)
-      const url = `c/api/admin_get_full_report?exam_id=${id}&parent_phone==${phone}&auth=kulianjibengong`
+      const url = `c/api/admin_get_full_report?exam_id=${id}&parent_phone=${phone}&auth=kulianjibengong`
       Api.request({
         url
       }).then((res)=>{
