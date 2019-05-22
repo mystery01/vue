@@ -80,6 +80,9 @@
     left: .032rem;
     top: .035rem;
   }
+  .mint-msgbox-btn {
+    font-size: .16rem;
+  }
 </style>
 
 <template>

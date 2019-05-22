@@ -144,6 +144,9 @@
   .mint-cell-value input,span {
     font-size: .16rem;
   }
+  mint-cell-value span {
+    font-size: .16rem !important;
+  }
   .title_buttom {
       width: 100%;
       height: .79rem;
@@ -185,7 +188,7 @@
         <!--</div>-->
 
         <mt-cell>
-          <span slot="title">姓&ensp;&ensp;&ensp;&ensp;名</span>
+          <span slot="title">孩子姓名:</span>
           <input type="text" class="mint-field-core" placeholder="请输入姓名 " v-model="username">
         </mt-cell>
         <!--<mt-cell>-->
@@ -195,7 +198,7 @@
         <a class="mint-cell">
           <div class="mint-cell-left"></div>
           <div class="mint-cell-wrapper">
-            <div class="mint-cell-title"><!----> <span>性&ensp;&ensp;&ensp;&ensp;别</span></div>
+            <div class="mint-cell-title"><!----> <span>孩子性别:</span></div>
             <div class="mint-cell-value is-link" @click="sexVisible = true"><span>{{sex === 0 ? '男' : '女'}}&ensp;</span></div>
             <i class="mint-cell-allow-right"></i></div>
           <div class="mint-cell-right"></div>
@@ -203,7 +206,7 @@
         <a class="mint-cell">
           <div class="mint-cell-left"></div>
           <div class="mint-cell-wrapper">
-            <div class="mint-cell-title"><!----> <span>出生日期</span></div>
+            <div class="mint-cell-title"><!----> <span>孩子出生日期:</span></div>
             <div class="mint-cell-value is-link" @click="openPicker()"><span>{{birthday || '请选择'}}&ensp;</span></div>
             <i class="mint-cell-allow-right"></i></div>
           <div class="mint-cell-right"></div>
