@@ -86,6 +86,7 @@ export default {
     document.title = '少儿优势测评'
     this.getList().then((data) => {
       if (data.code === 0) {
+        this.examList = data.data.examList
         this.isLogin = true
         this.phone = data.data.parentPhone
       } else if (data.code === 401) {
@@ -118,7 +119,14 @@ export default {
           }
         })
       } else {
-        this.$router.push('/reports')
+        if(this.examList.length === 0) {
+          Toast('暂无历史报告，请先完成评测!')
+          setTimeout(() => {
+            this.$router.push('/prepare')
+          }, 1000)
+        } else {
+          this.$router.push('/reports')
+        }
       }
     },
     goTest () {
