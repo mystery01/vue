@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="des">
-          <div class="text">完成报告会包含以下内容:</div>
+          <div class="text">完整报告会包含以下内容:</div>
           <p><span class="radius"></span> 三大优势主题的详细解释</p>
           <p><span class="radius"></span> 他人眼中您孩子的样子</p>
           <p><span class="radius"></span> 给孩子的行动计划与建议</p>
@@ -26,7 +26,7 @@
             如果您想获取完整报告，请添加微信号MissCorrine，完成转账。付费成功后，完整报告将通过微信发送给您。 
           </p>
           <img class="qrcode" src="../../assets/images/common/image_qr.png" alt="二维码.jpg">
-          <p class="price">完成报告限时售价 <span>39.9</span>元</p>
+          <p class="price">完整报告限时售价 <span>39.9</span>元</p>
           <p class="originPrice">原价79.9</p>
         </div>
       </div>
