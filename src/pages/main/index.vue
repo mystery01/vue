@@ -48,6 +48,7 @@
 <script>
 import _qj from '../../assets/js/util'
 import { Toast } from 'mint-ui'
+import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -71,6 +72,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['origin'])
   },
   watch: {
     seconds: function (value) {
@@ -83,6 +85,7 @@ export default {
     }
   },
   created () {
+    this.getOrigin()
     document.title = '少儿优势测评'
     this.getList().then((data) => {
       if (data.code === 0) {
@@ -95,6 +98,10 @@ export default {
     })
   },
   methods: {
+    getOrigin() {
+      const origin = this.$route.query.origin || ''
+      this.setOrigin(origin)
+    },
     goReport () {
       if (!this.isLogin) {
         if (this.checkCode()) {
@@ -214,7 +221,8 @@ export default {
         method: 'GET',
         url: 'c/api/query_exam_list'
       })
-    }
+    },
+    ...mapMutations(['setOrigin'])
   },
   components: {
   }

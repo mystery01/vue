@@ -37,6 +37,7 @@
 </template>
 <script>
 import Api from '../../assets/js/util'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -46,6 +47,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['origin'])
   },
   watch: {
   },
@@ -58,6 +60,7 @@ export default {
   methods: {
     // 获取数据
     fetchData() {
+      console.log(this.origin,'aaa')
       const id = this.$route.params.id
       const url = `c/api/get_simple_report?exam_id=${id}`
       Api.request({
