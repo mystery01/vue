@@ -266,6 +266,7 @@
 import _qj from '../../assets/js/util.js'
 import {Toast} from 'mint-ui'
 import moment from 'moment'
+import { mapState } from 'vuex'
 export default {
   name: 'prepare',
   data () {
@@ -312,6 +313,9 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState(['origin'])
+  },
   methods: {
     openPicker () {
       this.$refs.picker.open()
@@ -333,6 +337,7 @@ export default {
       }
     },
     startExam () {
+      console.log(this.origin,'ssdsds')
       if (!this.username.trim()) {
         Toast('请输入孩子姓名')
         return
@@ -347,7 +352,8 @@ export default {
         data: {
           childName: this.username,
           childGender: this.sex, // 0-女，1-男
-          childBirthday: this.birthday
+          childBirthday: this.birthday,
+          origin: this.origin
         }
       }).then(res => {
         if (res.code === 0) {
