@@ -74,7 +74,7 @@ export default {
           position absolute
           top .4rem
           width 2.95rem
-          height 100%
+          height calc(100% - .4rem)
           background rgba(204,204,204, .98)
           display flex
           justify-content center

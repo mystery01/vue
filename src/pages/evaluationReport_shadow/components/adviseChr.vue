@@ -68,7 +68,7 @@ export default {
           left .05rem
           top .5rem
           width 3rem
-          height 100%
+          height calc(100% - .5rem)
           background rgba(204,204,204, .98)
           display flex
           justify-content center
