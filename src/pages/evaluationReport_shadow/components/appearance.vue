@@ -75,7 +75,7 @@ export default {
           top .4rem
           width 2.95rem
           height 100%
-          background rgba(204,204,204, .95)
+          background rgba(204,204,204, .97)
         }
         .des {
           font-size .12rem

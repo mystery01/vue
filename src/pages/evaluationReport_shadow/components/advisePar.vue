@@ -83,7 +83,7 @@ export default {
           top .5rem
           width 3rem
           height 100%
-          background rgba(204,204,204, .95)
+          background rgba(204,204,204, .97)
         }
         .childActionList {
           font-size .12rem
