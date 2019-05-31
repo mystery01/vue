@@ -23,6 +23,7 @@
           <p><span class="radius"></span> 他人眼中您孩子的样子</p>
           <p><span class="radius"></span> 给父母的行动计划与建议</p>
           <p><span class="radius"></span> 给孩子的行动计划与建议</p>
+          <p @click='handleJumpDetail' class="link">查看您孩子的完整报告示例</p>
           <p class="explain">
             对报告内容有任何疑问及完整报告解析，欢迎添加小苹果助教微信（微信号：The_rainbow1）
           </p>
@@ -59,9 +60,13 @@ export default {
     this.fetchData()
   },
   methods: {
+    // 跳完成报告
+    handleJumpDetail() {
+      const id = this.$route.params.id
+      this.$router.push(`/detailShadow/${id}`)
+    },
     // 获取数据
     fetchData() {
-      console.log(this.origin,'aaa')
       const id = this.$route.params.id
       const url = `c/api/get_simple_report?exam_id=${id}`
       Api.request({
@@ -162,9 +167,14 @@ export default {
         .des {
           margin-top .2rem
           width 100%
+          .link {
+            margin-top .25rem
+            font-size .16rem
+            color #5b7aff
+          }
           p {
             margin-top .1rem;
-            font-size .12rem
+            font-size .14rem
             color #555B77
             .radius {
               display inline-block
@@ -175,7 +185,7 @@ export default {
             }
           }
           .text {
-            font-size .14rem
+            font-size .16rem
             color #363A4D
           }
           .explain {
