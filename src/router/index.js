@@ -24,7 +24,7 @@ const router = new Router({
       component: () => import('@/pages/evaluationReport_shadow/detail')
     },
     { // 管理员详细评测报告
-      path: '/admin/:id/:phone',
+      path: '/admin/:id',
       name: 'admin',
       component: () => import('@/pages/evaluationReport/admin')
     },

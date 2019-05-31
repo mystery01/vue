@@ -8,6 +8,7 @@
         <Advantage :themeList = 'themeList'/>
         <Words />
         <Menu />
+        <TopTen :allThemeList = 'allThemeList'/>
         <ThreeAdvantageDetail :themeList = 'themeList'/>
         <Appearance :themeList = 'themeList'/>
         <AdvisePar :themeList = 'themeList'/>
@@ -25,6 +26,7 @@ import ThreeAdvantageDetail from './components/threeAdvantageDetail'
 import Appearance from './components/appearance'
 import AdvisePar from './components/advisePar'
 import AdviseChr from './components/advisechr'
+import TopTen from './components/topTen'
 import Words from './components/text'
 import Api from '../../assets/js/util'
 import { Toast } from 'mint-ui'
@@ -33,6 +35,7 @@ export default {
     return {
       isLoading: false,
       themeList: [],
+      allThemeList: [],
       name: ''
     }
   },
@@ -52,11 +55,12 @@ export default {
       const id = this.$route.params.id
       const phone = this.$route.params.phone
       console.log(id,phone)
-      const url = `c/api/admin_get_full_report?exam_id=${id}&parent_phone=${phone}&auth=kulianjibengong`
+      const url = `c/api/get_hidden_full_report?exam_id=${id}&parent_phone=${phone}&auth=kulianjibengong`
       Api.request({
         url
       }).then((res)=>{
           if(res.code === 0){
+            this.allThemeList = res.data.allThemeList
             this.themeList = res.data.themeList
             this.name = res.data.childName
           }else{
@@ -66,6 +70,7 @@ export default {
     }
   },
   components: {
+    TopTen,
     Advantage,
     Words,
     Menu,
