@@ -18,12 +18,13 @@
         </div>
         <div class="des">
           <div class="text">完整报告会包含以下内容:</div>
-          <p><span class="radius"></span> 三大优势主题的详细解释</p>
+          <p><span class="radius"></span> 您孩子的优势排序</p>
+          <p><span class="radius"></span> TOP3优势主题的详细解释</p>
           <p><span class="radius"></span> 他人眼中您孩子的样子</p>
-          <p><span class="radius"></span> 给孩子的行动计划与建议</p>
           <p><span class="radius"></span> 给父母的行动计划与建议</p>
+          <p><span class="radius"></span> 给孩子的行动计划与建议</p>
           <p class="explain">
-            如果您想获取完整报告，请添加微信号MissCorrine，完成转账。付费成功后，完整报告将通过微信发送给您。 
+            对报告内容有任何疑问及完整报告解析，欢迎添加小苹果助教微信（微信号：The_rainbow1）
           </p>
           <img class="qrcode" src="../../assets/images/common/image_qr.png" alt="二维码.jpg">
           <p class="price">完整报告限时售价 <span>39.9</span>元</p>
@@ -148,7 +149,7 @@ export default {
             :nth-child(1) {
               font-size .16rem
               text-align left
-              color #5877FF
+              color #b6831b
             }
             :nth-child(2) {
               font-size .12rem

@@ -86,7 +86,7 @@ export default {
       :nth-child(1) {
         font-size .16rem
         text-align left
-        color #5877FF
+        color #b6831b
       }
       :nth-child(2) {
         font-size .12rem

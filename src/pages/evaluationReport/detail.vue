@@ -8,6 +8,7 @@
         <Advantage :themeList = 'themeList'/>
         <Words />
         <Menu />
+        <TopTen :allThemeList = 'allThemeList'/>
         <ThreeAdvantageDetail :themeList = 'themeList'/>
         <Appearance :themeList = 'themeList'/>
         <AdvisePar :themeList = 'themeList'/>
@@ -26,12 +27,14 @@ import Appearance from './components/appearance'
 import AdvisePar from './components/advisePar'
 import AdviseChr from './components/advisechr'
 import Words from './components/text'
+import TopTen from './components/topTen'
 import Api from '../../assets/js/util'
 export default {
   data () {
     return {
       isLoading: false,
       themeList: [],
+      allThemeList: [],
       name: ''
     }
   },
@@ -53,12 +56,14 @@ export default {
       Api.request({
         url
       }).then((res)=>{
+        this.allThemeList = res.data.allThemeList
         this.themeList = res.data.themeList
         this.name = res.data.childName
       })
     }
   },
   components: {
+    TopTen,
     Advantage,
     Words,
     Menu,

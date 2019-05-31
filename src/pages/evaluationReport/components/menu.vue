@@ -1,7 +1,8 @@
 <template>
   <div class="menu">
     <ReportTitle :title=title />
-    <p>三大优势主题的详细解释</p>
+    <p>您孩子的优势排序</p>
+    <p>TOP3优势主题的详细解释</p>
     <p>他人眼中您孩子的样子</p>
     <p>给父母的行动计划与建议</p>
     <p>给孩子的行动计划与建议</p>

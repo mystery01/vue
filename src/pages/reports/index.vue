@@ -100,6 +100,10 @@ export default {
     this.getList().then((data) => {
       if (data.code === 0) {
         this.parentPhone = data.data.parentPhone
+        data.data.examList.map((ele, index)=>{
+          ele.theme_name_list.length = 3
+        })
+        console.log(data.data.examList,'data.data.examList.')
         this.tbody = data.data.examList
       } else if (data.code === 401) {
         Toast('无查看权限!')
