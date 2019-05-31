@@ -5,7 +5,7 @@
         <p>{{ele.name}}</p>
         <div class="content">
           {{ele.description}}
-          <div class="shadow"></div>
+          <div class="shadow">完整报告解锁后可见</div>
         </div>
     </div>
 </div>
@@ -58,7 +58,12 @@ export default {
           top .4rem
           width 2.95rem
           height 100%
-          background rgba(204,204,204, .97)
+          background rgba(204,204,204, .98)
+          display flex
+          justify-content center
+          align-items center
+          font-size .14rem
+          color #363a4d
         }
       }
       p {

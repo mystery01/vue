@@ -9,7 +9,7 @@
             <p class="childActionTitle">一些实例参考</p>
             <p class="childActionDes" v-for='(ele,index) in ele.childExampleList' :key=index><span class="radius"></span>{{ele}}</p>
           </div>
-          <div class="shadow"></div>
+          <div class="shadow">完整报告解锁后可见</div>
         </div>
     </div>
 </div>
@@ -69,7 +69,13 @@ export default {
           top .5rem
           width 3rem
           height 100%
-          background rgba(204,204,204, .97)
+          background rgba(204,204,204, .98)
+          display flex
+          justify-content center
+          align-items center
+          font-size .14rem
+          color #363a4d
+          
         }
         .childActionList {
           font-size .12rem
