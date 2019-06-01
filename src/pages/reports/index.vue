@@ -46,7 +46,7 @@
         </div>
         <div class="report_des">
           <div class="report_des_info">
-            如果您想获取完整报告，请添加微信号MissCorrine，完成转账。付费成功后，完整报告将通过微信发送给您。
+            对报告内容有任何疑问及完整报告解析，欢迎添加小苹果助教微信（微信号：The_rainbow1）
           </div>
           <div class="report_des_pic">
             <img src="../../assets/images/common/image_qr.png" alt="二维码.jpg">
@@ -71,7 +71,7 @@ export default {
   data () {
     return {
       items: [
-        ' ● 三大优势主题的详细解释', ' ● 他人眼中您孩子的样子', ' ● 给孩子的行动计划与建议', ' ● 给父母的行动计划与建议'
+        ' ● 您孩子的优势排序', ' ● 三大优势主题的详细解释', ' ● 他人眼中您孩子的样子', ' ● 给孩子的行动计划与建议', ' ● 给父母的行动计划与建议'
       ],
       thead: [
         '手机号', '孩子姓名', '优势', '测评时间', '报告'
