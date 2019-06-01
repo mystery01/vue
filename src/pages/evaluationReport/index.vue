@@ -20,7 +20,7 @@
           <div class="text">完整报告会包含以下内容:</div>
           <p><span class="radius"></span> 您孩子的优势排序</p>
           <p><span class="radius"></span> TOP3优势主题的详细解释</p>
-          <p><span class="radius"></span> 他人眼中您孩子的样子</p>
+          <!-- <p><span class="radius"></span> 他人眼中您孩子的样子</p> -->
           <p><span class="radius"></span> 给父母的行动计划与建议</p>
           <p><span class="radius"></span> 给孩子的行动计划与建议</p>
           <p @click='handleJumpDetail' class="link">查看您孩子的完整报告示例</p>

@@ -10,7 +10,7 @@
         <Menu />
         <TopTen :allThemeList = 'allThemeList'/>
         <ThreeAdvantageDetail :themeList = 'themeList'/>
-        <Appearance :themeList = 'themeList'/>
+        <!-- <Appearance :themeList = 'themeList'/> -->
         <AdvisePar :themeList = 'themeList'/>
         <AdviseChr :themeList = 'themeList'/>
       </div>
