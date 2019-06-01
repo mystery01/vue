@@ -8,7 +8,7 @@
         <Advantage :themeList = 'themeList'/>
         <Words />
         <Menu />
-        <TopTen :allThemeList = 'allThemeList'/>
+        <!-- <TopTen :allThemeList = 'allThemeList'/> -->
         <ThreeAdvantageDetail :themeList = 'themeList'/>
         <Appearance :themeList = 'themeList'/>
         <AdvisePar :themeList = 'themeList'/>
@@ -21,7 +21,7 @@
 <script>
 
 import Advantage from './components/advantage'
-import Menu from './components/menu'
+import Menu from './components/menu_tx'
 import ThreeAdvantageDetail from './components/threeAdvantageDetail'
 import Appearance from './components/appearance'
 import AdvisePar from './components/advisePar'
@@ -55,7 +55,7 @@ export default {
       const id = this.$route.params.id
       const phone = this.$route.params.phone
       console.log(id,phone)
-      const url = `c/api/get_hidden_full_report?exam_id=${id}&parent_phone=${phone}&auth=kulianjibengong`
+      const url = `c/api/admin_get_full_report?exam_id=${id}&parent_phone=${phone}&auth=kulianjibengong`
       Api.request({
         url
       }).then((res)=>{
