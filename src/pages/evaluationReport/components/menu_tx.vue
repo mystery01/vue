@@ -1,6 +1,7 @@
 <template>
   <div class="menu">
     <ReportTitle :title=title />
+    <p v-show='allThemeList.length>0'>您孩子的优势排序</p>
     <p>TOP3优势主题的详细解释</p>
     <p>他人眼中您孩子的样子</p>
     <p>给父母的行动计划与建议</p>
@@ -11,6 +12,7 @@
 import ReportTitle from './reportTitle'
 export default {
   props: {
+    allThemeList: Array
   },
   data () {
     return {

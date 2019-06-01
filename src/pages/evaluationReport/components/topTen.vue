@@ -1,5 +1,5 @@
 <template>
-  <div class="threeAdvantageDetail">
+  <div v-show='allThemeList.length>0' class="threeAdvantageDetail">
     <ReportTitle :title=title />
     <div class="content">
       <div class="keyWord" v-for='(ele,index) in allThemeList' :key=index>

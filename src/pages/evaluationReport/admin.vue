@@ -7,8 +7,8 @@
         <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
         <Advantage :themeList = 'themeList'/>
         <Words />
-        <Menu />
-        <!-- <TopTen :allThemeList = 'allThemeList'/> -->
+        <Menu :allThemeList = 'allThemeList'/>
+        <TopTen :allThemeList = 'allThemeList'/>
         <ThreeAdvantageDetail :themeList = 'themeList'/>
         <Appearance :themeList = 'themeList'/>
         <AdvisePar :themeList = 'themeList'/>
@@ -60,7 +60,7 @@ export default {
         url
       }).then((res)=>{
           if(res.code === 0){
-            this.allThemeList = res.data.allThemeList
+            this.allThemeList = res.data.allThemeList || []
             this.themeList = res.data.themeList
             this.name = res.data.childName
           }else{
