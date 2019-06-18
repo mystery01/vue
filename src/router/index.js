@@ -18,6 +18,11 @@ const router = new Router({
       name: 'detail',
       component: () => import('@/pages/evaluationReport/detail')
     },
+    { // 详细评测报告
+      path: '/optimize/:id',
+      name: 'optimize',
+      component: () => import('@/pages/evaluationReport/optimize')
+    },
     { // 详细蒙层评测报告
       path: '/detailShadow/:id',
       name: 'detailshadow',
