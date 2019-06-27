@@ -5,13 +5,13 @@
       <p>{{themeList[0].name}}</p>
     </div>
     <div class="keyWord">
-      <div class="content">{{themeList[0].description}}</div>
+      <!-- <div class="content">{{themeList[0].description}}</div> -->
       <div v-for='(ele,index) in data' :key='index'>
         <div class="items">
           <div class="lock"></div>
           <div class="des">
             <p>{{ele.key.replace(/成就者/, themeList[0].name)}}</p>
-            <p class="link">{{ele.value.replace(/成就者/, themeList[0].name)}}</p>
+            <p class="link" :keys='ele.flag' @click='handleJump'>{{ele.value.replace(/成就者/, themeList[0].name)}}</p>
           </div>
         </div>
         <div class="underline"></div>
@@ -30,15 +30,18 @@ export default {
       data: [
         {
           key: '关于成就者，你要了解的。',
-          value: '成就者孩子的特点和短板>>>',
+          value: '成就者孩子的特点>>>',
+          flag: 10
         },
         {
           key: '成就者孩子如何运用自己的优势？',
           value: '给成就者孩子的建议>>>',
+          flag: 11
         },
         {
           key: '成就者孩子如何运用自己的优势？',
           value: '给成就者孩子的建议>>>',
+          flag: 12
         }
       ]
     }
@@ -50,6 +53,13 @@ export default {
   created () {
   },
   methods: {
+    handleJump(e) {
+      let key = e.target.attributes.keys.value
+      // 记录滚动的的位置
+      let scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+      sessionStorage.setItem('scrollY',scrollY)
+      this.$emit('changeCommon',{val: true,type: key - 0})
+    }
   },
   components: {
   }

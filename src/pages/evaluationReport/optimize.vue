@@ -6,10 +6,20 @@
         <p class="result">少儿优势测评结果查询</p>
         <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
         <Advantage :themeList = 'themeList'/>
-        <TopOne :themeList = 'themeList'/>
-        <TopTwo :themeList = 'themeList'/>
-        <TopThree :themeList = 'themeList'/>
-        <DefaultModal v-if='showModal' @changeDefaultModal='changeDefaultModal'/>
+        <TopOne :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <TopTwo :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <TopThree :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <DefaultModal 
+          :themeList = 'themeList'
+          v-if='showModal' 
+          @changeDefaultModal='changeDefaultModal'
+        />
+        <CommonModal
+          :keys = 'keys'
+          :themeList = 'themeList'
+          @changeCommon='changeCommon'
+          v-if='showCommon' 
+         />
         <TopTen/>
       </div>
     </div>
@@ -23,6 +33,7 @@ import TopTwo from './components/TopTwo'
 import TopThree from './components/TopThree'
 import TopTen from './components/TopTenNew'
 import DefaultModal from './components/defaultModal'
+import CommonModal from './components/commonModal'
 import Advantage from './components/advantage'
 import Api from '../../assets/js/util'
 export default {
@@ -32,7 +43,9 @@ export default {
       themeList: [],
       allThemeList: [],
       name: '',
-      showModal: true
+      showModal: false,
+      showCommon: false,
+      keys: ''
     }
   },
   computed: {
@@ -41,11 +54,25 @@ export default {
   },
   created () {
     document.title = '少儿优势测评'
+    // this.handleValueChange(true)
   },
   mounted() {
     this.fetchData()
   },
   methods: {
+    handler (e) {
+      e.preventDefault()
+    },
+    // 解决点传问题
+    handleValueChange (val) {
+      if(val) {
+        document.body.style.overflow = 'hidden'
+        document.addEventListener('touchmove', this.handler, { passive: false })
+      } else {
+        document.body.style.overflow = 'auto'
+        document.removeEventListener('touchmove', this.handler, { passive: false })
+      }
+    },
     // 获取数据
     fetchData() {
       const id = this.$route.params.id
@@ -60,6 +87,25 @@ export default {
     },
     changeDefaultModal() {
       this.showModal = false
+      this.handleValueChange()
+    },
+    changeCommon(params) {
+      console.log(params)
+      if(params.val) {
+        scroll(0,0)
+        console.log(this.keys,'keys')
+        this.keys = params.type
+        console.log(22)
+        this.showCommon = true
+        console.log(this.keys,'keys')
+        this.handleValueChange(true)
+      } else {
+        let scrollY = sessionStorage.getItem('scrollY')
+        // 滚动回原来的位置
+        scroll(0,scrollY)
+        this.showCommon = false
+        this.handleValueChange()
+      }
     }
   },
   components: {
@@ -69,6 +115,7 @@ export default {
     TopTen,
     DefaultModal,
     Advantage,
+    CommonModal,
   }
 }
 </script>
