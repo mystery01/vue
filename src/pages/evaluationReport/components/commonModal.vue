@@ -15,7 +15,7 @@
 </template>
 <script>
 import TopThree from './three'
-import AdviseChr from './adviseChr'
+import AdviseChr from '../components/advisechr'
 import AdvisePar from './advisePar'
 export default {
   props: {
