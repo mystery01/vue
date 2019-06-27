@@ -1,29 +1,28 @@
 <template>
   <div v-if='themeList.length' class="topThree">
     <div class="title">
-      <!-- <span>Top3</span> -->
-      <p>{{themeList[flag].name}}</p>
+      <span>Top3</span>
+      <p>{{themeList[2].name}}</p>
     </div>
     <div class="keyWord">
-      <div class="content">{{themeList[flag].description}}</div>
-      <!-- <div v-for='(ele,index) in data' :key='index'>
+      <!-- <div class="content">{{themeList[2].description}}</div> -->
+      <div v-for='(ele,index) in data' :key='index'>
         <div class="items">
           <div class="lock"></div>
           <div class="des">
-            <p>{{ele.key.replace(/成就者/, themeList[0].name)}}</p>
-            <p class="link">{{ele.value.replace(/成就者/, themeList[0].name)}}</p>
+            <p>{{ele.key.replace(/成就者/, themeList[2].name)}}</p>
+            <p class="link" :keys='ele.flag' @click='handleJump'>{{ele.value.replace(/成就者/, themeList[2].name)}}</p>
           </div>
         </div>
         <div class="underline"></div>
-      </div> -->
+      </div>
     </div>
 </div>
 </template>
 <script>
 export default {
   props: {
-    themeList: Array,
-    keys: Number
+    themeList: Array
   },
   data () {
     return {
@@ -32,17 +31,19 @@ export default {
         {
           key: '关于成就者，你要了解的。',
           value: '成就者孩子的特点和短板>>>',
+          flag: 30
         },
         {
           key: '成就者孩子如何运用自己的优势？',
           value: '给成就者孩子的建议>>>',
+          flag: 31
         },
         {
           key: '成就者孩子如何运用自己的优势？',
           value: '给成就者孩子的建议>>>',
+          flag: 32
         }
-      ],
-      flag: 0
+      ]
     }
   },
   computed: {
@@ -50,12 +51,15 @@ export default {
   watch: {
   },
   created () {
-    if(this.keys) {
-      this.flag = String(this.keys).split('')[1] - 0
-    }
-    console.log(this.flag, 'themeList111')
   },
   methods: {
+    handleJump(e) {
+      let key = e.target.attributes.keys.value
+      // 记录滚动的的位置
+      let scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+      sessionStorage.setItem('scrollY',scrollY)
+      this.$emit('changeCommon',{val: true,type: key - 0})
+    }
   },
   components: {
   }

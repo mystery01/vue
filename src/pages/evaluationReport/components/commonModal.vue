@@ -5,16 +5,16 @@
       <div class="centent">
         <div class="title">我想对您说</div>
         <div class="cn">
-          <TopThree v-if='keys === 10' :keys='keys' :themeList = 'newData' />
-          <AdviseChr v-if='keys === 11' :themeList = 'newData'></AdviseChr>
-          <AdvisePar v-if='keys === 12' :themeList = 'newData'></AdvisePar>
+          <TopThree v-if='keys === 10 || keys === 20 || keys === 30' :themeList = 'newData' />
+          <AdviseChr v-if='keys === 11 || keys === 21 || keys === 31' :themeList = 'newData' />
+          <AdvisePar v-if='keys === 12 || keys === 22 || keys === 32' :themeList = 'newData' />
         </div>
       </div>
     </div>
 </div>
 </template>
 <script>
-import TopThree from './topThree'
+import TopThree from './three'
 import AdviseChr from './adviseChr'
 import AdvisePar from './advisePar'
 export default {
@@ -35,9 +35,12 @@ export default {
   created () {
     if(this.keys === 10 || this.keys === 11 || this.keys === 12 ){
       this.newData = [this.themeList[0]]
+    } else if (this.keys === 20 || this.keys === 21 || this.keys === 22) {
+      this.newData = [this.themeList[1]]
+    } else if (this.keys === 30 || this.keys === 31 || this.keys === 32) {
+      this.newData = [this.themeList[2]]
     }
     console.log(this.newData,'111')
-    // this.newData = this.themeList
   },
   methods: {
     close() {
