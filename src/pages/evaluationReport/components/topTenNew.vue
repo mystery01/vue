@@ -10,7 +10,7 @@
           <div class="lock"></div>
           <div class="des">
             <p>{{ele.key}}</p>
-            <p class="link">{{ele.value}}</p>
+            <p @click='handleJump' :keys='ele.flag' class="link">{{ele.value}}</p>
           </div>
         </div>
         <div class="underline"></div>
@@ -30,6 +30,7 @@ export default {
         {
           key: '孩子的十大优势排名',
           value: '点击查看>>>',
+          flag: 99
         }
       ]
     }
@@ -41,6 +42,14 @@ export default {
   created () {
   },
   methods: {
+    handleJump(e) {
+      let key = e.target.attributes.keys.value
+      console.log(key, 'key')
+      // 记录滚动的的位置
+      let scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+      sessionStorage.setItem('scrollY',scrollY)
+      this.$emit('changeCommon',{val: true,type: key - 0})
+    }
   },
   components: {
   }

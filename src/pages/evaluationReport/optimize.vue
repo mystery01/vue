@@ -17,10 +17,12 @@
         <CommonModal
           :keys = 'keys'
           :themeList = 'themeList'
+          :pay= 'pay'
+          :allThemeList = 'allThemeList'
           @changeCommon='changeCommon'
           v-if='showCommon' 
          />
-        <TopTen/>
+        <TopTen @changeCommon='changeCommon'/>
       </div>
     </div>
     <div class="title_buttom"></div>
@@ -45,7 +47,8 @@ export default {
       name: '',
       showModal: false,
       showCommon: false,
-      keys: ''
+      keys: '',
+      pay: ''
     }
   },
   computed: {
@@ -57,6 +60,8 @@ export default {
     // this.handleValueChange(true)
   },
   mounted() {
+    const pay = this.$route.params.pay
+    this.pay = pay
     this.fetchData()
   },
   methods: {
@@ -76,7 +81,9 @@ export default {
     // 获取数据
     fetchData() {
       const id = this.$route.params.id
-      const url = `c/api/get_full_report?exam_id=${id}`
+      const phone = this.$route.params.phone
+      const url = `c/api/admin_get_full_report?exam_id=${id}&parent_phone=${phone}&auth=kulianjibengong`
+      // const url = `c/api/get_full_report?exam_id=${id}`
       Api.request({
         url
       }).then((res)=>{

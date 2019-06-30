@@ -30,7 +30,7 @@
               </span>
             </div>
             <div v-else>
-              <mt-button class="button_common button_ok" v-if="item.status===50" @click="gotoDetail(item.id)">完整报告</mt-button>
+              <mt-button class="button_common button_ok" v-if="item.status === 50"  @click="gotoDetail(item.id,item.status)">完整报告</mt-button>
               <mt-button class="button_common" v-else>完整报告</mt-button>
               <mt-button class="button_common button_ok" @click="gotoReport(item.id)">精简报告</mt-button>
             </div>
@@ -122,8 +122,8 @@ export default {
 
   },
   methods: {
-    gotoDetail (id) {
-      this.$router.push(`/detail/${id}`)
+    gotoDetail (id,status) {
+      this.$router.push(`/detail/${id}/${status}/${this.parentPhone}`)
     },
     gotoReport (id) {
       this.$router.push(`/report/${id}`)

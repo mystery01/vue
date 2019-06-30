@@ -52,7 +52,9 @@ export default {
     // 获取数据
     fetchData() {
       const id = this.$route.params.id
-      const url = `c/api/get_full_report?exam_id=${id}`
+      const phone = this.$route.params.phone
+      const url = `c/api/admin_get_full_report?exam_id=${id}&parent_phone=${phone}&auth=kulianjibengong`
+      // const url = `c/api/get_full_report?exam_id=${id}`
       Api.request({
         url
       }).then((res)=>{

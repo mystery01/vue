@@ -13,13 +13,18 @@ const router = new Router({
       name: 'report',
       component: () => import('@/pages/evaluationReport/index')
     },
+    { // 评测报告
+      path: '/pay/:id',
+      name: 'pay',
+      component: () => import('@/pages/evaluationReport/pay')
+    },
     { // 详细评测报告
-      path: '/detail/:id',
+      path: '/detail/:id/:pay/:phone',
       name: 'detail',
       component: () => import('@/pages/evaluationReport/detail')
     },
     { // 详细评测报告
-      path: '/optimize/:id',
+      path: '/optimize/:id/:pay/:phone',
       name: 'optimize',
       component: () => import('@/pages/evaluationReport/optimize')
     },
