@@ -5,10 +5,10 @@
       <div class="container">
         <p class="result">少儿优势测评结果查询</p>
         <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
-        <Advantage :themeList = 'themeList'/>
-        <TopOne :themeList = 'themeList' @changeCommon='changeCommon'/>
-        <TopTwo :themeList = 'themeList' @changeCommon='changeCommon'/>
-        <TopThree :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <Advantage v-if='!showCommon'  :themeList = 'themeList'/>
+        <TopOne v-if='!showCommon'  :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <TopTwo v-if='!showCommon'   :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <TopThree v-if='!showCommon'  :themeList = 'themeList' @changeCommon='changeCommon'/>
         <DefaultModal 
           :themeList = 'themeList'
           v-if='showModal' 
@@ -45,7 +45,7 @@ export default {
       themeList: [],
       allThemeList: [],
       name: '',
-      showModal: false,
+      showModal: true,
       showCommon: false,
       keys: '',
       pay: ''
@@ -57,7 +57,7 @@ export default {
   },
   created () {
     document.title = '少儿优势测评'
-    // this.handleValueChange(true)
+    this.handleValueChange()
   },
   mounted() {
     const pay = this.$route.params.pay
@@ -70,7 +70,7 @@ export default {
     },
     // 解决点传问题
     handleValueChange (val) {
-      if(val) {
+      if(this.showModal) {
         document.body.style.overflow = 'hidden'
         document.addEventListener('touchmove', this.handler, { passive: false })
       } else {
@@ -97,21 +97,22 @@ export default {
       this.handleValueChange()
     },
     changeCommon(params) {
-      console.log(params)
+      console.log(params,'a1111')
       if(params.val) {
         scroll(0,0)
         console.log(this.keys,'keys')
         this.keys = params.type
-        console.log(22)
+        console.log('a22')
         this.showCommon = true
         console.log(this.keys,'keys')
-        this.handleValueChange(true)
+        // this.handleValueChange(true)
       } else {
         let scrollY = sessionStorage.getItem('scrollY')
+        console.log(scrollY, 'a33')
         // 滚动回原来的位置
         scroll(0,scrollY)
         this.showCommon = false
-        this.handleValueChange()
+        // this.handleValueChange()
       }
     }
   },

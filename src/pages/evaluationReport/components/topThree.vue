@@ -30,7 +30,7 @@ export default {
       data: [
         {
           key: '关于成就者，你要了解的。',
-          value: '成就者孩子的特点和短板>>>',
+          value: '成就者孩子的特点>>>',
           flag: 30
         },
         {

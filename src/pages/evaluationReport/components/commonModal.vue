@@ -57,13 +57,13 @@ export default {
     // 判断标题
     const flag = String(this.keys).split('')[0] - 1
     if(this.keys === 10 || this.keys === 20 || this.keys === 30 ){
-      this.themeList[0].title = `${this.themeList[flag].name}孩子的特点`
+      this.newData[0].title = `${this.themeList[flag].name}孩子的特点`
       // this.newData = [this.themeList[0]]
     } else if (this.keys === 11 || this.keys === 21 || this.keys === 31) {
-      this.themeList[1].title = `给${this.themeList[flag].name}孩子的行动建议`
+      this.newData[0].title = `给${this.themeList[flag].name}孩子的行动建议`
       // this.newData = [this.themeList[1]]
     } else if (this.keys === 12 || this.keys === 22 || this.keys === 32) {
-      this.themeList[2].title = `给${this.themeList[flag].name}父母的行动建议`
+      this.newData[0].title = `给${this.themeList[flag].name}父母的行动建议`
       // this.newData = [this.themeList[2]]
     } else if(this.keys === 99) {
       this.themeList[2].title = `十大优势排名`
