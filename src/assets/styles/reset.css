@@ -113,3 +113,5 @@ img{
 #cnzz_stat_icon_1277655538{
     visibility: hidden;
 }
+
+* { touch-action: pan-y; } 
