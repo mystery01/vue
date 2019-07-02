@@ -5,10 +5,10 @@
       <div class="container">
         <p class="result">少儿优势测评结果查询</p>
         <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
-        <Advantage  :themeList = 'themeList'/>
-        <TopOne :pay= 'pay'  :themeList = 'themeList' @changeCommon='changeCommon'/>
-        <TopTwo :pay= 'pay'   :themeList = 'themeList' @changeCommon='changeCommon'/>
-        <TopThree :pay= 'pay'  :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <Advantage v-if='!showCommon'   :themeList = 'themeList'/>
+        <TopOne :pay= 'pay'  v-if='!showCommon'   :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <TopTwo :pay= 'pay'  v-if='!showCommon'  :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <TopThree :pay= 'pay' v-if='!showCommon'  :themeList = 'themeList' @changeCommon='changeCommon'/>
         <DefaultModal 
           :themeList = 'themeList'
           v-if='showModal' 
@@ -73,10 +73,10 @@ export default {
     handleValueChange (val) {
       if(val) {
         document.body.style.overflow = 'hidden'
-        document.addEventListener('touchmove', this.handler)
+        document.addEventListener('touchmove', this.handler,{ passive: false })
       } else {
         document.body.style.overflow = 'auto'
-        document.removeEventListener('touchmove', this.handler)
+        document.removeEventListener('touchmove', this.handler,{ passive: false })
       }
     },
     // 获取数据
@@ -106,14 +106,14 @@ export default {
         console.log('a22')
         this.showCommon = true
         console.log(this.keys,'keys')
-        this.handleValueChange(true)
+        // this.handleValueChange(true)
       } else {
         let scrollY = sessionStorage.getItem('scrollY')
         console.log(scrollY, 'a33')
         // 滚动回原来的位置
         scroll(0,scrollY)
         this.showCommon = false
-        this.handleValueChange()
+        // this.handleValueChange()
       }
     }
   },
