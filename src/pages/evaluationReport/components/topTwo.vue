@@ -8,7 +8,7 @@
       <!-- <div class="content">{{themeList[1].description}}</div> -->
       <div v-for='(ele,index) in data' :key='index'>
         <div class="items">
-          <div class="lock"></div>
+          <div v-if="pay !== '50'" class="lock"></div>
           <div class="des">
             <p>{{ele.key.replace(/成就者/, themeList[1].name)}}</p>
             <p class="link" :keys='ele.flag' @click='handleJump'>{{ele.value.replace(/成就者/, themeList[1].name)}}</p>
@@ -22,7 +22,8 @@
 <script>
 export default {
   props: {
-    themeList: Array
+    themeList: Array,
+    pay: String
   },
   data () {
     return {

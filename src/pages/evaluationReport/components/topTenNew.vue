@@ -7,7 +7,7 @@
       <div class="content">{{des}}</div>
       <div v-for='(ele,index) in data' :key='index'>
         <div class="items">
-          <div class="lock"></div>
+          <div v-if="pay !== '50'" class="lock"></div>
           <div class="des">
             <p>{{ele.key}}</p>
             <p @click='handleJump' :keys='ele.flag' class="link">{{ele.value}}</p>
@@ -21,6 +21,7 @@
 <script>
 export default {
   props: {
+    pay: String
   },
   data () {
     return {

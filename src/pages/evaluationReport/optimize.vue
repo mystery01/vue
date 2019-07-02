@@ -5,10 +5,10 @@
       <div class="container">
         <p class="result">少儿优势测评结果查询</p>
         <span class="name"><span>{{name}}</span>你是这样的独特存在</span>
-        <Advantage v-if='!showCommon'  :themeList = 'themeList'/>
-        <TopOne v-if='!showCommon'  :themeList = 'themeList' @changeCommon='changeCommon'/>
-        <TopTwo v-if='!showCommon'   :themeList = 'themeList' @changeCommon='changeCommon'/>
-        <TopThree v-if='!showCommon'  :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <Advantage  :themeList = 'themeList'/>
+        <TopOne :pay= 'pay'  :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <TopTwo :pay= 'pay'   :themeList = 'themeList' @changeCommon='changeCommon'/>
+        <TopThree :pay= 'pay'  :themeList = 'themeList' @changeCommon='changeCommon'/>
         <DefaultModal 
           :themeList = 'themeList'
           v-if='showModal' 
@@ -22,7 +22,7 @@
           @changeCommon='changeCommon'
           v-if='showCommon' 
          />
-        <TopTen @changeCommon='changeCommon'/>
+        <TopTen :pay= 'pay' @changeCommon='changeCommon'/>
       </div>
     </div>
     <div class="title_buttom"></div>
@@ -57,7 +57,7 @@ export default {
   },
   created () {
     document.title = '少儿优势测评'
-    this.handleValueChange()
+    // this.handleValueChange()
   },
   mounted() {
     const pay = this.$route.params.pay
@@ -67,15 +67,16 @@ export default {
   methods: {
     handler (e) {
       e.preventDefault()
+      return false
     },
     // 解决点传问题
     handleValueChange (val) {
-      if(this.showModal) {
+      if(val) {
         document.body.style.overflow = 'hidden'
-        document.addEventListener('touchmove', this.handler, { passive: false })
+        document.addEventListener('touchmove', this.handler)
       } else {
         document.body.style.overflow = 'auto'
-        document.removeEventListener('touchmove', this.handler, { passive: false })
+        document.removeEventListener('touchmove', this.handler)
       }
     },
     // 获取数据
@@ -105,14 +106,14 @@ export default {
         console.log('a22')
         this.showCommon = true
         console.log(this.keys,'keys')
-        // this.handleValueChange(true)
+        this.handleValueChange(true)
       } else {
         let scrollY = sessionStorage.getItem('scrollY')
         console.log(scrollY, 'a33')
         // 滚动回原来的位置
         scroll(0,scrollY)
         this.showCommon = false
-        // this.handleValueChange()
+        this.handleValueChange()
       }
     }
   },

@@ -202,8 +202,9 @@ export default {
             message: '提交成功',
             iconClass: 'icon icon-success'
           })
-          const examId = res.data.examId
-          this.$router.push(`/report/${examId}`)
+          this.$router.push('/reports')
+          // const examId = res.data.examId
+          // this.$router.push(`/report/${examId}`)
         } else {
           Toast(res.msg)
         }

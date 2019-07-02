@@ -30,9 +30,9 @@
               </span>
             </div>
             <div v-else>
-              <mt-button class="button_common button_ok" v-if="item.status === 50"  @click="gotoDetail(item.id,item.status)">完整报告</mt-button>
-              <mt-button class="button_common" v-else>完整报告</mt-button>
-              <mt-button class="button_common button_ok" @click="gotoReport(item.id)">精简报告</mt-button>
+              <mt-button class="button_common button_ok" @click="gotoDetail(item.id,item.status)">完整报告</mt-button>
+              <!-- <mt-button class="button_common" v-else>详细报告</mt-button> -->
+              <!-- <mt-button class="button_common button_ok" @click="gotoReport(item.id)">精简报告</mt-button> -->
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@ export default {
   },
   methods: {
     gotoDetail (id,status) {
-      this.$router.push(`/detail/${id}/${status}/${this.parentPhone}`)
+      this.$router.push(`/optimize/${id}/${status}/${this.parentPhone}`)
     },
     gotoReport (id) {
       this.$router.push(`/report/${id}`)
@@ -186,6 +186,7 @@ export default {
           .buttons{
             padding-left 1.2rem
             padding-top .1rem
+            text-align right
             .buttons_no{
               color #898C99
               text-align center

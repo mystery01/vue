@@ -98,20 +98,20 @@ export default {
     top 0 
     bottom 0
     overflow hidden
-    // background: rgba(0,0,0,0.7)
+    background: rgba(0,0,0,0.7)
     // overflow-y: scroll;
-    // display flex;
-    // justify-content center 
-    // align-items center
+    display flex;
+    justify-content center 
+    align-items center
     // flex-direction column
     .modal {
-      width 100%
-      height 100%
+      width 3.3rem
+      height 5rem
+      border-radius: .04rem
+      background #fff
       overflow-y: scroll;
-      // border-radius: .04rem
       background #fff
       position relative
-      margin 0rem auto 0 auto
       .close {
         position absolute
         top .13rem

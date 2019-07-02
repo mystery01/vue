@@ -1,6 +1,6 @@
 <template>
   <div class="adviseChr">
-    <ReportTitle :title=title />
+    <!-- <ReportTitle :title=title /> -->
     <div class="keyWord" v-for='(ele,index) in themeList' :key=index>
         <p>{{ele.name}}</p>
         <div class="content">
