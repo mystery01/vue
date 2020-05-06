@@ -17,6 +17,8 @@ import Mint from 'mint-ui' //ui
 import 'mint-ui/lib/style.css'
 import 'babel-polyfill'
 import VueTouch from 'vue-touch'
+import { vueBaberrage } from 'vue-baberrage'
+Vue.use(vueBaberrage)
 Vue.use(VueTouch, {name: 'v-touch'}) //全局引用
 Vue.use(Mint)
 // 123

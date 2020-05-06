@@ -43,15 +43,28 @@
       </div>
     </div>
     <div class="title_buttom"></div>
+    <vue-baberrage
+      :isShow= "barrageIsShow"
+      :barrageList = "barrageList"
+      :loop = "barrageLoop"
+      >
+    </vue-baberrage>
   </div>
 </template>
 <script>
+import { MESSAGE_TYPE } from 'vue-baberrage'
 import _qj from '../../assets/js/util'
 import { Toast } from 'mint-ui'
 import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
+      msg: 'Hello vue-baberrage',
+      barrageIsShow: true,
+      currentId : 0,
+      barrageLoop: false,
+      barrageList: ['1','1','1','1','1','1','1','1','1','1'],
+
       phone: '',
       captcha: '',
       isLoading: false,
@@ -98,6 +111,15 @@ export default {
     })
   },
   methods: {
+    addToList() {
+      this.barrageList.push({
+        id: ++this.currentId,
+        // avatar: "./static/avatar.jpg",
+        msg: this.msg,
+        time: 5,
+        type: MESSAGE_TYPE.NORMAL
+      })
+    },
     getOrigin() {
       const origin = this.$route.query.origin || ''
       this.setOrigin(origin)
